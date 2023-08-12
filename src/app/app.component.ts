@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'labonneaffaire';
+  message: string = ""
+  getMessage(message: string) {
+    this.message = message
+  }
 }
