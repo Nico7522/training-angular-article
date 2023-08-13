@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { DataService } from './shared/services/data.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ArticleComponent } from './article/article.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { TitleComponent } from './article/title/title.component';
-import { PriceComponent } from './article/price/price.component';
-import { LikeComponent } from './article/like/like.component';
 import { FormsModule } from '@angular/forms';
-import { CommentComponent } from './article/comment/comment.component';
+import { ListeComponent } from './liste/liste.component';
+import { ArticleComponent } from './liste/article/article.component';
+import { CommentComponent } from './liste/article/comment/comment.component';
+import { TitleComponent } from './liste/article/title/title.component';
+import { PriceComponent } from './liste/article/price/price.component';
+import { LikeComponent } from './liste/article/like/like.component';
+import { LastArticleComponent } from './liste/last-article/last-article.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,14 +22,12 @@ import { CommentComponent } from './article/comment/comment.component';
     TitleComponent,
     PriceComponent,
     LikeComponent,
-    CommentComponent
+    CommentComponent,
+    ListeComponent,
+    LastArticleComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  providers: [DataService],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
