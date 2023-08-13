@@ -1,2 +1,3 @@
-<button (click)="onLike()" class="btn btn-primary">J'aime</button>
+<button [disabled]="isClicked === 'liked'" (click)="onLike()" class="btn btn-success btn-sm" [ngClass]="{'clicked': isClicked === 'liked'}">J'aime</button>
+<button [disabled]="isClicked === 'disliked'" (click)="onDislike()" class="btn btn-danger btn-sm" [ngClass]="{'clicked': isClicked === 'disliked'}">Je n'aime pas</button>
 <p>Nombre de like : {{ totalNumberLike }}</p>

@@ -1,0 +1,7 @@
+.clicked {
+    background-color: gray;
+    opacity: 0.5;
+}
+button {
+    margin-left: 2px;
+}

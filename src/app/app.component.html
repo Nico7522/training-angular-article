@@ -5,21 +5,13 @@
     <p>{{ message }}</p>
   </div>
   <div id="home">
-    <app-article
-      [titleArticle]="'Vélo'"
-      [priceArticle]="120"
-      (isLikedMessage)="getMessage($event)"
-    ></app-article>
-    <app-article
-      [titleArticle]="'Bateau'"
-      [priceArticle]="3000"
-      (isLikedMessage)="getMessage($event)"
-    ></app-article>
-    <app-article
-      [titleArticle]="'Voile'"
-      [priceArticle]="599"
-      (isLikedMessage)="getMessage($event)"
-    ></app-article>
+    <app-article *ngFor="let article of liste"
+    [titleArticle]="article.titleArticle"
+    [priceArticle]="article.priceArticle"
+    [description]="article.description"
+    [availabe]="article.available"
+    (isLikedMessage)="getMessage($event)"
+    />
   </div>
 
 

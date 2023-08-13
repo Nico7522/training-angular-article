@@ -8,6 +8,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class ArticleComponent {
 @Input() titleArticle: string = "";
 @Input() priceArticle: number = 12;
+@Input() availabe: boolean = true
+@Input() description: string = ""
 @Output() isLikedMessage = new EventEmitter<string>()
 totalNumberLike: number = 0;
 comment: string = '';

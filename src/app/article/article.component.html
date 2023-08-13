@@ -1,8 +1,9 @@
 <div class="card articleInfo" style="width: 18rem">
   <img [src]="urlImg" class="card-img-top" [alt]="textAltImg" />
   <div class="card-body">
-    <app-title [titleArticle]="titleArticle" />
+    <app-title [titleArticle]="titleArticle" [availabe]="availabe" />
     <app-price [priceArticle]="priceArticle" />
+    <h3>{{description}}</h3>
     <app-like [totalNumberLike]="totalNumberLike" [titleArticle]="titleArticle" (info)="getIsLiked($event)" />
     <app-comment [comment]="comment"/>
   </div>

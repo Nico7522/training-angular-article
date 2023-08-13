@@ -1,1 +1,3 @@
-<h5 class="card-title">{{titleArticle}}</h5>
+<h5 class="card-title" [ngStyle]="{color: getColor()}">{{titleArticle | uppercase}} 
+    <span *ngIf="!availabe"> - Indisponible</span>
+</h5>
