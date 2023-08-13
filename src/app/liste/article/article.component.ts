@@ -10,6 +10,7 @@ export class ArticleComponent {
 @Input() priceArticle: number = 12;
 @Input() availabe: boolean = true
 @Input() description: string = ""
+@Input() id: number = 0
 @Output() isLikedMessage = new EventEmitter<string>()
 totalNumberLike: number = 0;
 comment: string = '';

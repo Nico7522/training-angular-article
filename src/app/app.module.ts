@@ -13,6 +13,7 @@ import { TitleComponent } from './liste/article/title/title.component';
 import { PriceComponent } from './liste/article/price/price.component';
 import { LikeComponent } from './liste/article/like/like.component';
 import { LastArticleComponent } from './liste/last-article/last-article.component';
+import { DetailsComponent } from './liste/article/details/details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +26,7 @@ import { LastArticleComponent } from './liste/last-article/last-article.componen
     CommentComponent,
     ListeComponent,
     LastArticleComponent,
+    DetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [DataService],

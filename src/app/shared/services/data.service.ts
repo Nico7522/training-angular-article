@@ -2,34 +2,48 @@ import { Injectable } from '@angular/core';
 import { Article } from '../models/article';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
   articleList: Article[] = [
     {
-      titleArticle: "Vélo",
+      id: 1,
+      titleArticle: 'Vélo',
       priceArticle: 200,
-      description: "Vélo nouvelle collection",
-      textAltImg: "alternative title",
-      urlImg:  "https://via.placeholder.com/400x250",
-      available: true
+      description: 'Vélo nouvelle collection',
+      textAltImg: 'alternative title',
+      urlImg: 'https://via.placeholder.com/400x250',
+      available: true,
+      numberOfLike: 0
+
     },
     {
-      titleArticle: "Bateau",
+      id: 2,
+      titleArticle: 'Bateau',
       priceArticle: 1777,
-      description: "Bateau nouvelle collection",
-      textAltImg: "alternative title",
-      urlImg:  "https://via.placeholder.com/400x250",
-      available: true
+      description: 'Bateau nouvelle collection',
+      textAltImg: 'alternative title',
+      urlImg: 'https://via.placeholder.com/400x250',
+      available: true,
+      numberOfLike: 0
     },
     {
-      titleArticle: "Voile",
+      id: 3,
+      titleArticle: 'Voile',
       priceArticle: 999,
-      description: "Voile nouvelle collection",
-      textAltImg: "alternative title",
-      urlImg:  "https://via.placeholder.com/400x250",
-      available: false
+      description: 'Voile nouvelle collection',
+      textAltImg: 'alternative title',
+      urlImg: 'https://via.placeholder.com/400x250',
+      available: false,
+      numberOfLike: 0
+
     },
-  ]
-  constructor() { }
+  ];
+
+  getById(id: number): Article | undefined {
+    return this.articleList.find((a: Article) => a.id === id);
+  }
+
+  
+  constructor() {}
 }

@@ -4,6 +4,7 @@
     </div>
     <div id="home">
       <app-article *ngFor="let article of articles"
+      [id]="article.id"
       [titleArticle]="article.titleArticle"
       [priceArticle]="article.priceArticle"
       [description]="article.description"

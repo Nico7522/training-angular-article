@@ -4,6 +4,7 @@
     <app-title [titleArticle]="titleArticle" [availabe]="availabe" />
     <app-price [priceArticle]="priceArticle" />
     <h3>{{description}}</h3>
+    <p routerLink="/{{id}}">Détails</p>
     <app-like [totalNumberLike]="totalNumberLike" [titleArticle]="titleArticle" (info)="getIsLiked($event)" />
     <app-comment [comment]="comment"/>
   </div>
