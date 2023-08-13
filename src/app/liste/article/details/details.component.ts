@@ -14,6 +14,7 @@ export class DetailsComponent implements OnInit {
     private articleList: DataService,
     private route: ActivatedRoute
   ) {}
+
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
     let articleFound = this.articleList.getById(Number(id))

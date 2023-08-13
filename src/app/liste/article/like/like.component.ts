@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: 'app-like',
@@ -6,21 +7,20 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./like.component.css']
 })
 export class LikeComponent {
-@Input() totalNumberLike: number = 0;
+  constructor(private articleList: DataService){}
+@Input() liked!: number;
 @Input() titleArticle: string = "";
-@Output() info = new EventEmitter<string>();
+@Input() id!: number
 isClicked: string = ''
 
-onLike(): void {
-  this.totalNumberLike +=1;
-  this.info.emit(this.titleArticle)
-  this.isClicked = 'liked'
+like(id: number) {
+  this.articleList.onLike(id)
+  this.isClicked = "liked"
 }
 
-onDislike(): void {
-  this.totalNumberLike -=1;
-  this.info.emit(this.titleArticle)
-  this.isClicked = 'disliked'
-
+dislike(id: number) {
+  this.articleList.onDislike(id)
+  this.isClicked = "disliked"
 }
+
 }

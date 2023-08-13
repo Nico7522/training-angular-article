@@ -5,7 +5,7 @@
     <app-price [priceArticle]="priceArticle" />
     <h3>{{description}}</h3>
     <p routerLink="/{{id}}">Détails</p>
-    <app-like [totalNumberLike]="totalNumberLike" [titleArticle]="titleArticle" (info)="getIsLiked($event)" />
+    <app-like [liked]="liked" [titleArticle]="titleArticle" [id]="id" />
     <app-comment [comment]="comment"/>
   </div>
 </div>

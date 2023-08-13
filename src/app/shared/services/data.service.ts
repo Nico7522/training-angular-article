@@ -44,6 +44,24 @@ export class DataService {
     return this.articleList.find((a: Article) => a.id === id);
   }
 
+  onLike(id: number): void {
+    this.articleList.filter((a: Article) => {
+      if (a.id === id) {
+        a.numberOfLike =+1
+      }
+    })
+
+  }
   
+  onDislike(id: number): void {
+    this.articleList.filter((a: Article) => {
+      if (a.id === id) {
+        a.numberOfLike -=1
+      }
+    })
+  
+  }
+
+
   constructor() {}
 }
