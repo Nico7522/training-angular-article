@@ -1,13 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ListeComponent } from './liste/liste.component';
-import { LastArticleComponent } from './liste/last-article/last-article.component';
-import { DetailsComponent } from './liste/article/details/details.component';
+import { ArticlesSectionComponent } from './articles-section/articles-section';
+import { LastArticleComponent } from './articles-section/last-article/last-article.component';
+import { HomeComponent } from './shared/home/home.component';
+import { ArticlesSectionModule } from './articles-section/articles-section.module';
+
+
+
+
 
 const routes: Routes = [
+  {path: '', component: HomeComponent  },
   {path: 'last', component: LastArticleComponent },
-  {path: 'all', component: ListeComponent },
-  {path: 'article/:id', component: DetailsComponent },
+  {path: 'article', component: ArticlesSectionComponent, loadChildren: () => import('./articles-section/articles-section.module').then(m => ArticlesSectionModule) },
+  
+  
 ];
 
 @NgModule({

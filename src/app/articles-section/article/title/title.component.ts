@@ -11,7 +11,7 @@ export class TitleComponent {
 
   getColor(): string {
     if (this.availabe) {
-      return "green"
+      return "black"
     } else {
       return "red"
     }

@@ -8,32 +8,32 @@ export class DataService {
   articleList: Article[] = [
     {
       id: 1,
-      titleArticle: 'Vélo',
-      priceArticle: 200,
-      description: 'Vélo nouvelle collection',
+      titleArticle: 'Pain',
+      priceArticle: 4.99,
+      description: 'Pain frais du jour',
       textAltImg: 'alternative title',
-      urlImg: 'https://via.placeholder.com/400x250',
+      urlImg: '../../../assets/pain.jpeg',
       available: true,
       numberOfLike: 0
 
     },
     {
       id: 2,
-      titleArticle: 'Bateau',
-      priceArticle: 1777,
-      description: 'Bateau nouvelle collection',
+      titleArticle: 'Baguette',
+      priceArticle: 2.59,
+      description: 'Baguette du jour',
       textAltImg: 'alternative title',
-      urlImg: 'https://via.placeholder.com/400x250',
+      urlImg: '../../../assets/baguette.jpg',
       available: true,
       numberOfLike: 0
     },
     {
       id: 3,
-      titleArticle: 'Voile',
-      priceArticle: 999,
-      description: 'Voile nouvelle collection',
+      titleArticle: 'Croissant',
+      priceArticle: 1.77,
+      description: 'Croissant tout chaud',
       textAltImg: 'alternative title',
-      urlImg: 'https://via.placeholder.com/400x250',
+      urlImg: '../../../assets/croissant.jpg',
       available: false,
       numberOfLike: 0
 

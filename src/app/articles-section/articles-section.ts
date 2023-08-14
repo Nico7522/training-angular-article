@@ -4,11 +4,11 @@ import { Article } from '../shared/models/article';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-liste',
-  templateUrl: './liste.component.html',
-  styleUrls: ['./liste.component.css']
+  selector: 'app-articles-section',
+  templateUrl: './articles-section.html',
+  styleUrls: ['./articles-section.css']
 })
-export class ListeComponent {
+export class ArticlesSectionComponent {
   constructor(private articleList: DataService) {}
   articles: Article[] = []
   title = 'labonneaffaire';

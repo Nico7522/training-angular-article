@@ -6,29 +6,28 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { FormsModule } from '@angular/forms';
-import { ListeComponent } from './liste/liste.component';
-import { ArticleComponent } from './liste/article/article.component';
-import { CommentComponent } from './liste/article/comment/comment.component';
-import { TitleComponent } from './liste/article/title/title.component';
-import { PriceComponent } from './liste/article/price/price.component';
-import { LikeComponent } from './liste/article/like/like.component';
-import { LastArticleComponent } from './liste/last-article/last-article.component';
-import { DetailsComponent } from './liste/article/details/details.component';
+
+
+import { ArticlesSectionComponent } from './articles-section/articles-section';
+import { ArticleComponent } from './articles-section/article/article.component';
+import { TitleComponent } from './articles-section/article/title/title.component';
+import { CommentComponent } from './articles-section/article/comment/comment.component';
+import { PriceComponent } from './articles-section/article/price/price.component';
+import { LikeComponent } from './articles-section/article/like/like.component';
+import { HomeComponent } from './shared/home/home.component';
+
+import { ArticlesSectionModule } from './articles-section/articles-section.module';
+
+
 @NgModule({
   declarations: [
     AppComponent,
-    ArticleComponent,
     NavbarComponent,
     FooterComponent,
-    TitleComponent,
-    PriceComponent,
-    LikeComponent,
-    CommentComponent,
-    ListeComponent,
-    LastArticleComponent,
-    DetailsComponent,
+    HomeComponent,
+    
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ArticlesSectionModule],
   providers: [DataService],
   bootstrap: [AppComponent],
 })
