@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="card articleInfo" *ngFor="let article of filteredArticle">
+    <img
+      [src]="article.urlImg"
+      class="card-img-top"
+      [alt]="article.textAltImg"
+    />
+    <div class="card-body">
+      <app-title
+        [titleArticle]="article.titleArticle"
+        [availabe]="article.available"
+      />
+      <app-price [priceArticle]="article.priceArticle" />
+      <h3>{{ article.description }}</h3>
+      <!-- <app-like [totalNumberLike]="article.numberOfLike" [titleArticle]="article.titleArticle" (info)="getIsLiked($event)" /> -->
+      <!-- <app-comment [comment]="comment"/>   -->
+    </div>
+  </div>
+</div>

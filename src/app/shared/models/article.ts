@@ -6,5 +6,6 @@ export type Article = {
     textAltImg: string;
     urlImg: string;
     available: boolean;
-    numberOfLike: number
+    numberOfLike: number;
+    categorie: string;
 }

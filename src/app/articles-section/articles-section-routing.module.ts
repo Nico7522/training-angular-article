@@ -2,10 +2,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ArticlesSectionComponent } from './articles-section';
 import { DetailsComponent } from './article/details/details.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { CategorieSelectedComponent } from './categories/categorie-selected/categorie-selected.component';
 
 const routes: Routes = [
   {path: '', component: ArticlesSectionComponent},
   {path: "article/:id", component: DetailsComponent},
+  {path: "categories", component: CategoriesComponent, children: [
+    {path: ":categorie", component: CategorieSelectedComponent},
+
+  ]},
 ];
 
 @NgModule({

@@ -14,28 +14,93 @@ export class DataService {
       textAltImg: 'alternative title',
       urlImg: '../../../assets/pain.jpeg',
       available: true,
-      numberOfLike: 0
+      numberOfLike: 0,
+      categorie: "pain"
 
     },
     {
       id: 2,
+      titleArticle: 'Pain',
+      priceArticle: 4.99,
+      description: 'Pain frais du jour',
+      textAltImg: 'alternative title',
+      urlImg: '../../../assets/pain.jpeg',
+      available: true,
+      numberOfLike: 0,
+      categorie: "pain"
+
+    },
+    {
+      id: 3,
+      titleArticle: 'Pain',
+      priceArticle: 4.99,
+      description: 'Pain frais du jour',
+      textAltImg: 'alternative title',
+      urlImg: '../../../assets/pain.jpeg',
+      available: true,
+      numberOfLike: 0,
+      categorie: "pain"
+
+    },
+    {
+      id: 4,
+      titleArticle: 'Pain',
+      priceArticle: 4.99,
+      description: 'Pain frais du jour',
+      textAltImg: 'alternative title',
+      urlImg: '../../../assets/pain.jpeg',
+      available: true,
+      numberOfLike: 0,
+      categorie: "pain"
+
+    },
+    {
+      id: 5,
+      titleArticle: 'Pain',
+      priceArticle: 4.99,
+      description: 'Pain frais du jour',
+      textAltImg: 'alternative title',
+      urlImg: '../../../assets/pain.jpeg',
+      available: true,
+      numberOfLike: 0,
+      categorie: "pain"
+
+    },
+    {
+      id: 6,
+      titleArticle: 'Pain',
+      priceArticle: 4.99,
+      description: 'Pain frais du jour',
+      textAltImg: 'alternative title',
+      urlImg: '../../../assets/pain.jpeg',
+      available: true,
+      numberOfLike: 0,
+      categorie: "pain"
+
+    },
+    {
+      id: 7,
       titleArticle: 'Baguette',
       priceArticle: 2.59,
       description: 'Baguette du jour',
       textAltImg: 'alternative title',
       urlImg: '../../../assets/baguette.jpg',
       available: true,
-      numberOfLike: 0
+      numberOfLike: 0,
+      categorie: "baguette"
+
     },
     {
-      id: 3,
+      id: 8,
       titleArticle: 'Croissant',
       priceArticle: 1.77,
       description: 'Croissant tout chaud',
       textAltImg: 'alternative title',
       urlImg: '../../../assets/croissant.jpg',
       available: false,
-      numberOfLike: 0
+      numberOfLike: 0,
+      categorie: "vienoisserie"
+
 
     },
   ];

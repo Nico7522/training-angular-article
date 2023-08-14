@@ -10,6 +10,8 @@ import { PriceComponent } from './article/price/price.component';
 import { LikeComponent } from './article/like/like.component';
 import { FormsModule } from '@angular/forms';
 import { DetailsComponent } from './article/details/details.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { CategorieSelectedComponent } from './categories/categorie-selected/categorie-selected.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { DetailsComponent } from './article/details/details.component';
     CommentComponent,
     PriceComponent,
     LikeComponent,
-    DetailsComponent
+    DetailsComponent,
+    CategoriesComponent,
+    CategorieSelectedComponent
   ],
   imports: [
     CommonModule,
