@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
 import { DataService } from './shared/services/data.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
