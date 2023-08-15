@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Article } from '../models/article';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -110,8 +111,12 @@ export class DataService {
       categorie: 'vienoisserie',
     },
   ];
-
+  private _product!: Article | undefined;
+  private _$product: BehaviorSubject<Article | undefined> = new BehaviorSubject<Article | undefined>(this._product);
+  $product: Observable<Article | undefined> = this._$product.asObservable();
   getById(id: number): Article | undefined {
+    const temp = this.articleList.find(a => { return a.id === id})
+    this._$product.next(temp)
     return this.articleList.find((a: Article) => a.id === id);
   }
 

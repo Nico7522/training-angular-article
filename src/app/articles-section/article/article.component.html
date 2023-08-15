@@ -5,7 +5,7 @@
     <app-price [priceArticle]="priceArticle" />
     <h3>{{description}}</h3>
     <div class="row-display">
-      <app-modal-details [id]="id"></app-modal-details>
+      <app-modal-details [idArticle]="id" [descriptionArticle]="description"/>
       <!-- <a routerLink="/article/{{ id }}">Détails</a> -->
         <app-like [liked]="liked" [disliked]="disliked" [titleArticle]="titleArticle" [id]="id" />
     </div>

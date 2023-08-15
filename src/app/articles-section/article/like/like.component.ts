@@ -17,6 +17,8 @@ isLiked: boolean = false
 isDisliked: boolean = false
 
 like(id: number) {
+ 
+  
   this.articleList.onLike(id, this.isLiked)
  
   this.isLiked = !this.isLiked
