@@ -1,0 +1,17 @@
+ul {
+    border: solid black 1px;
+    width: 10%;
+    margin-left: 5px;
+    
+    
+}
+li {
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    border-bottom: solid black 1px;
+    
+}
+li:hover {
+    background: #f8f0f0;
+}

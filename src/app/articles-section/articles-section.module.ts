@@ -12,6 +12,10 @@ import { FormsModule } from '@angular/forms';
 import { DetailsComponent } from './article/details/details.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategorieSelectedComponent } from './categories/categorie-selected/categorie-selected.component';
+import { SharedModule } from '../shared/shared.module';
+
+
+
 
 
 @NgModule({
@@ -24,12 +28,16 @@ import { CategorieSelectedComponent } from './categories/categorie-selected/cate
     LikeComponent,
     DetailsComponent,
     CategoriesComponent,
-    CategorieSelectedComponent
+    CategorieSelectedComponent,
+  
   ],
+  
   imports: [
     CommonModule,
+    SharedModule,
     ArticlesSectionRoutingModule,
-    FormsModule
+    FormsModule,
+   
   ]
 })
 export class ArticlesSectionModule { }

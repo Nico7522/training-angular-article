@@ -1,7 +1,28 @@
-.clicked {
-    background-color: gray;
+.liked {
+    background-color: rgb(142, 212, 114);
+    opacity: 0.5;
+}
+
+.disliked {
+    background-color: rgb(187, 73, 73);
     opacity: 0.5;
 }
 button {
     margin-left: 2px;
+    border-radius: 10px;
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+
+}
+button > span {
+    margin-left: 5px;
+}
+
+
+.like {
+    display: flex;
+    flex-direction: row;
 }

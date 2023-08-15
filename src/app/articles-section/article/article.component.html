@@ -4,8 +4,12 @@
     <app-title [titleArticle]="titleArticle" [availabe]="availabe" />
     <app-price [priceArticle]="priceArticle" />
     <h3>{{description}}</h3>
-    <a routerLink="/article/{{ id }}">Détails</a>
-    <app-like [liked]="liked" [titleArticle]="titleArticle" [id]="id" />
+    <div class="row-display">
+      <app-modal-details [id]="id"></app-modal-details>
+      <!-- <a routerLink="/article/{{ id }}">Détails</a> -->
+        <app-like [liked]="liked" [disliked]="disliked" [titleArticle]="titleArticle" [id]="id" />
+    </div>
+    
     <app-comment [comment]="comment"/>
   </div>
 </div> 

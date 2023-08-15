@@ -7,11 +7,11 @@ import { CategorieSelectedComponent } from './categories/categorie-selected/cate
 
 const routes: Routes = [
   {path: '', component: ArticlesSectionComponent},
-  {path: "article/:id", component: DetailsComponent},
-  {path: "categories", component: CategoriesComponent, children: [
+  {path: "article/categories", component: CategoriesComponent, children: [
+    {path: "", component: CategorieSelectedComponent},
     {path: ":categorie", component: CategorieSelectedComponent},
-
   ]},
+  {path: "article/:id", component: DetailsComponent},
 ];
 
 @NgModule({

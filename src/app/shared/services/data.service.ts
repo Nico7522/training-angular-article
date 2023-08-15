@@ -15,8 +15,8 @@ export class DataService {
       urlImg: '../../../assets/pain.jpeg',
       available: true,
       numberOfLike: 0,
-      categorie: "pain"
-
+      numberOfDislike: 0,
+      categorie: 'pain',
     },
     {
       id: 2,
@@ -27,8 +27,9 @@ export class DataService {
       urlImg: '../../../assets/pain.jpeg',
       available: true,
       numberOfLike: 0,
-      categorie: "pain"
+      numberOfDislike: 0,
 
+      categorie: 'pain',
     },
     {
       id: 3,
@@ -39,8 +40,9 @@ export class DataService {
       urlImg: '../../../assets/pain.jpeg',
       available: true,
       numberOfLike: 0,
-      categorie: "pain"
+      numberOfDislike: 0,
 
+      categorie: 'pain',
     },
     {
       id: 4,
@@ -51,8 +53,9 @@ export class DataService {
       urlImg: '../../../assets/pain.jpeg',
       available: true,
       numberOfLike: 0,
-      categorie: "pain"
+      numberOfDislike: 0,
 
+      categorie: 'pain',
     },
     {
       id: 5,
@@ -63,8 +66,9 @@ export class DataService {
       urlImg: '../../../assets/pain.jpeg',
       available: true,
       numberOfLike: 0,
-      categorie: "pain"
+      numberOfDislike: 0,
 
+      categorie: 'pain',
     },
     {
       id: 6,
@@ -75,8 +79,9 @@ export class DataService {
       urlImg: '../../../assets/pain.jpeg',
       available: true,
       numberOfLike: 0,
-      categorie: "pain"
+      numberOfDislike: 0,
 
+      categorie: 'pain',
     },
     {
       id: 7,
@@ -87,8 +92,9 @@ export class DataService {
       urlImg: '../../../assets/baguette.jpg',
       available: true,
       numberOfLike: 0,
-      categorie: "baguette"
+      numberOfDislike: 0,
 
+      categorie: 'baguette',
     },
     {
       id: 8,
@@ -99,9 +105,9 @@ export class DataService {
       urlImg: '../../../assets/croissant.jpg',
       available: false,
       numberOfLike: 0,
-      categorie: "vienoisserie"
+      numberOfDislike: 0,
 
-
+      categorie: 'vienoisserie',
     },
   ];
 
@@ -109,24 +115,29 @@ export class DataService {
     return this.articleList.find((a: Article) => a.id === id);
   }
 
-  onLike(id: number): void {
+  onLike(id: number, isLiked: boolean): void {
     this.articleList.filter((a: Article) => {
       if (a.id === id) {
-        a.numberOfLike =+1
+        if (!isLiked) {
+          a.numberOfLike += 1;
+        } else {
+          a.numberOfLike -= 1;
+        }
       }
-    })
-
+    });
   }
-  
-  onDislike(id: number): void {
+
+  onDislike(id: number, isDisliked: boolean): void {
     this.articleList.filter((a: Article) => {
       if (a.id === id) {
-        a.numberOfLike -=1
+        if (isDisliked) {
+          a.numberOfDislike -= 1;
+        } else {
+          a.numberOfDislike += 1;
+        }
       }
-    })
-  
+    });
   }
-
 
   constructor() {}
 }

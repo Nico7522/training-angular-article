@@ -16,10 +16,17 @@ export class CategorieSelectedComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
-      this.filteredArticle = this.articleList.articleList.filter((a) => {
-        return params['categorie'] === a.categorie;
-      });
-    });
+    const categorieSelected = this.route.snapshot.params['categorie']
+    
+    if (categorieSelected) {
+      this.route.params.subscribe((params) => {
+          this.filteredArticle = this.articleList.articleList.filter((a) => {
+            return params['categorie'] === a.categorie;
+          });
+       
+      }); 
+    } else {
+      this.filteredArticle = this.articleList.articleList
+    }
   }
 }

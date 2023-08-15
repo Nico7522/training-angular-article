@@ -1,9 +1,16 @@
-<h1>Toutes les catégories</h1>
-<ul>
-  <li><a routerLink="/categories/pain">Pain</a></li>
-  <li><a routerLink="/categories/baguette">Baguette</a></li>
-  <li><a routerLink="/categories/vienoisserie">Vienoisserie</a></li>
-</ul>
+
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Catégories
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" routerLink="/article/categories/pain">Pain</a>
+    <a class="dropdown-item" routerLink="/article/categories/baguette">Baguette</a>
+    <a class="dropdown-item" routerLink="/article/categories/vienoisserie">Vienoisserie</a>
+  </div>
+</div>
+
 
   <router-outlet>
     

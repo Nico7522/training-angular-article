@@ -1,3 +1,14 @@
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Catégories
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" routerLink="/article/categories/pain">Pain</a>
+    <a class="dropdown-item" routerLink="/article/categories/baguette">Baguette</a>
+    <a class="dropdown-item" routerLink="/article/categories/vienoisserie">Vienoisserie</a>
+  </div>
+</div>
+
 <div  class="container">
     <div id="alertMsg">
       <p>{{ message }}</p>
@@ -12,6 +23,7 @@
       [liked]="article.numberOfLike"
       [img]="article.urlImg"
       [alt]="article.textAltImg"
+      [disliked]="article.numberOfDislike"
       />
     </div>
   
