@@ -15,7 +15,7 @@ export class ModalDetailsComponent {
     this.productSub = this.list.$product.subscribe((prod) => {
       this.product = prod;
     });
-    
+
     //  this.list._$product.subscribe({
     //   next: (data) => { this.product = data}
     //  })

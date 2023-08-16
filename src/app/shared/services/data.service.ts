@@ -111,16 +111,35 @@ export class DataService {
       categorie: 'vienoisserie',
     },
   ];
+  // Observable pour les détails
   private _product!: Article | undefined;
- test: ReplaySubject<Article> = new ReplaySubject
- 
-  _$product: BehaviorSubject<Article | undefined> = new BehaviorSubject<Article | undefined>(this._product);
+  private _$product: BehaviorSubject<Article | undefined> = new BehaviorSubject<Article | undefined>(this._product);
   $product: Observable<Article | undefined> = this._$product.asObservable();
+
+  //Observable pour la recherche
+  private _search: String = "";
+  private _$search: BehaviorSubject<String> = new BehaviorSubject<String>(this._search);
+  $search: Observable<String> = this._$search.asObservable()
+  private filteredProduct: BehaviorSubject<Article[]> = new BehaviorSubject<Article[]>([])
+  $filteredProduct: Observable<Article[]> = this.filteredProduct.asObservable();
+
+  
   getById(id: number): Article | undefined {
     const actualProduct = this.articleList.find(a => { return a.id === id})
     this._$product.next(actualProduct)
     
     return this.articleList.find((a: Article) => a.id === id);
+  }
+
+  onSearch(value: string) {
+    
+    const filter = this.articleList.filter((article) => {
+      return article.titleArticle.includes(value)
+    })
+    this.filteredProduct.next(filter)
+  
+   
+    
   }
 
   onLike(id: number, isLiked: boolean): void {
