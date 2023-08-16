@@ -15,7 +15,10 @@ export class ModalDetailsComponent {
     this.productSub = this.list.$product.subscribe((prod) => {
       this.product = prod;
     });
-    console.log(this.product);
+    
+    //  this.list._$product.subscribe({
+    //   next: (data) => { this.product = data}
+    //  })
   }
 
   @Input() idArticle!: number;

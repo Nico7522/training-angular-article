@@ -5,6 +5,11 @@
     justify-content: space-around;
     align-items: center;
     padding: 5%;
+    margin-bottom: 50px;
+}
+
+.container {
+    margin-top: -50px;
 }
 
 #alertMsg {

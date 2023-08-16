@@ -13,18 +13,17 @@
               
               <!-- Autres propriétés du produit -->
          
-            <h1 class="modal-title fs-5" id="exampleModalLabel"> description : {{product?.description}}</h1>
+            <h1 class="modal-title fs-5" id="exampleModalLabel">{{product?.titleArticle}}</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
 
-
-      
-        
         <div class="modal-body">
+          {{product?.description}}
+          <img src="{{product?.urlImg}}" width="250" alt="">
+          {{product?.priceArticle}} Euros
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
