@@ -3,3 +3,9 @@
     flex-direction: column;
     align-items: center;
 }
+
+.btn-primary {
+    background: #e6a61f;
+    border-color: #e6a61f;
+}
+

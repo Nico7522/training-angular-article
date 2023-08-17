@@ -1,33 +1,33 @@
-import { Component, Input} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: 'app-like',
   templateUrl: './like.component.html',
-  styleUrls: ['./like.component.css']
+  styleUrls: ['./like.component.css'],
 })
-export class LikeComponent {
-  constructor(private articleList: DataService){}
-@Input() liked!: number;
-@Input() disliked!: number;
-@Input() titleArticle: string = "";
-@Input() id!: number
+export class LikeComponent implements OnInit {
+  constructor(private articleList: DataService) {
 
-isLiked: boolean = false
-isDisliked: boolean = false
+    
+  }
+  @Input() liked!: number;
+  @Input() disliked!: number;
+  @Input() isLiked!: boolean
+  @Input() isDisliked!: boolean
+  @Input() titleArticle: string = '';
+  @Input() id!: number;
 
-like(id: number) {
+
+  ngOnInit(): void {
  
-  
-  this.articleList.onLike(id, this.isLiked)
- 
-  this.isLiked = !this.isLiked
-}
+  }
 
-dislike(id: number) {
-  this.articleList.onDislike(id, this.isDisliked)
+  like(id: number) {
+    this.articleList.onLike(id);
+  }
 
-  this.isDisliked = !this.isDisliked
-}
-
+  dislike(id: number) {
+    this.articleList.onDislike(id);
+  }
 }

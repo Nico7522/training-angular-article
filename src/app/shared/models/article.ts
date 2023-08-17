@@ -7,6 +7,8 @@ export type Article = {
     urlImg: string;
     available: boolean;
     numberOfLike: number;
-    numberOfDislike: number
+    numberOfDislike: number;
+    isLiked: boolean;
+    isDisliked: boolean;
     categorie: string;
 }

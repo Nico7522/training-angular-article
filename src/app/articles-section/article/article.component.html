@@ -7,7 +7,7 @@
     <div class="row-display">
       <app-modal-details [idArticle]="id" [descriptionArticle]="description"/>
       <!-- <a routerLink="/article/{{ id }}">Détails</a> -->
-        <app-like [liked]="liked" [disliked]="disliked" [titleArticle]="titleArticle" [id]="id" />
+        <app-like [liked]="liked" [disliked]="disliked" [titleArticle]="titleArticle" [id]="id" [isLiked]="isLiked" [isDisliked]="isDisliked" />
     </div>
     
     <app-comment [comment]="comment"/>

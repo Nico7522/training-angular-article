@@ -15,6 +15,8 @@ export class ArticleComponent {
 @Input() id: number = 0
 @Input() liked: number = 0
 @Input() disliked: number = 0
+@Input() isLiked!: boolean;
+@Input() isDisliked!: boolean;
 @Input() img!: string;
 @Input() alt!: string;
 @Output() isLikedMessage = new EventEmitter<string>()

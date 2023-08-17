@@ -1,0 +1,10 @@
+h2 {
+    text-align: center;
+}
+
+img {
+    width: 450px !important;
+    height: 300px;
+    margin: auto;
+    border-radius: 20px;
+}

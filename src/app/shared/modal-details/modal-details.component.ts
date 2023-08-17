@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Article } from '../models/article';
 import { BehaviorSubject, Subscription } from 'rxjs';
@@ -8,7 +8,7 @@ import { BehaviorSubject, Subscription } from 'rxjs';
   templateUrl: './modal-details.component.html',
   styleUrls: ['./modal-details.component.css'],
 })
-export class ModalDetailsComponent {
+export class ModalDetailsComponent implements OnDestroy {
   product?: Article;
   productSub?: Subscription;
   constructor(private list: DataService) {
@@ -20,7 +20,9 @@ export class ModalDetailsComponent {
     //   next: (data) => { this.product = data}
     //  })
   }
-
+ngOnDestroy(): void {
+    this.productSub?.unsubscribe()
+}
   @Input() idArticle!: number;
 
   @Input() descriptionArticle: string = '';

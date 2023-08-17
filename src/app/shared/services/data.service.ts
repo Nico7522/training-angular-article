@@ -17,6 +17,9 @@ export class DataService {
       available: true,
       numberOfLike: 0,
       numberOfDislike: 0,
+      isLiked: false,
+      isDisliked: false,
+
       categorie: 'pain',
     },
     {
@@ -29,6 +32,8 @@ export class DataService {
       available: true,
       numberOfLike: 0,
       numberOfDislike: 0,
+      isLiked: false,
+      isDisliked: false,
 
       categorie: 'pain',
     },
@@ -42,6 +47,8 @@ export class DataService {
       available: true,
       numberOfLike: 0,
       numberOfDislike: 0,
+      isLiked: false,
+      isDisliked: false,
 
       categorie: 'pain',
     },
@@ -55,6 +62,8 @@ export class DataService {
       available: true,
       numberOfLike: 0,
       numberOfDislike: 0,
+      isLiked: false,
+      isDisliked: false,
 
       categorie: 'pain',
     },
@@ -68,6 +77,8 @@ export class DataService {
       available: true,
       numberOfLike: 0,
       numberOfDislike: 0,
+      isLiked: false,
+      isDisliked: false,
 
       categorie: 'pain',
     },
@@ -81,6 +92,8 @@ export class DataService {
       available: true,
       numberOfLike: 0,
       numberOfDislike: 0,
+      isLiked: false,
+      isDisliked: false,
 
       categorie: 'pain',
     },
@@ -94,7 +107,8 @@ export class DataService {
       available: true,
       numberOfLike: 0,
       numberOfDislike: 0,
-
+      isLiked: false,
+      isDisliked: false,
       categorie: 'baguette',
     },
     {
@@ -107,7 +121,8 @@ export class DataService {
       available: false,
       numberOfLike: 0,
       numberOfDislike: 0,
-
+      isLiked: false,
+      isDisliked: false,
       categorie: 'vienoisserie',
     },
   ];
@@ -122,6 +137,8 @@ export class DataService {
   $search: Observable<String> = this._$search.asObservable()
   private filteredProduct: BehaviorSubject<Article[]> = new BehaviorSubject<Article[]>([])
   $filteredProduct: Observable<Article[]> = this.filteredProduct.asObservable();
+
+
 
   
   getById(id: number): Article | undefined {
@@ -142,25 +159,32 @@ export class DataService {
     
   }
 
-  onLike(id: number, isLiked: boolean): void {
+  onLike(id: number): void {
     this.articleList.filter((a: Article) => {
       if (a.id === id) {
-        if (!isLiked) {
-          a.numberOfLike += 1;
+        if (!a.isLiked) {
+          a.numberOfLike +=1;
+          a.isLiked = true;
         } else {
-          a.numberOfLike -= 1;
+          a.numberOfLike -=1;
+          a.isLiked = false;
+          
         }
+ 
       }
     });
   }
 
-  onDislike(id: number, isDisliked: boolean): void {
+  onDislike(id: number): void {
     this.articleList.filter((a: Article) => {
       if (a.id === id) {
-        if (isDisliked) {
-          a.numberOfDislike -= 1;
+        if (!a.isDisliked) {
+          a.numberOfDislike +=1;
+          a.isDisliked = true;
         } else {
-          a.numberOfDislike += 1;
+          a.numberOfDislike -=1;
+          a.isDisliked = false;
+          
         }
       }
     });
