@@ -9,6 +9,8 @@ export class TokenService {
   constructor() { }
 
   saveToken(token: any): void {
+    console.log('token', token);
+    
     sessionStorage.setItem("token", JSON.stringify(token))
   }
 
@@ -16,6 +18,7 @@ export class TokenService {
     return sessionStorage.getItem('token')
   }
 
+  // Attention en front on utilise pas
   getDecodeToken(): string | null {
     if (this.getToken()) {
       const token = this.getToken()

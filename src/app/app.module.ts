@@ -11,8 +11,9 @@ import { HomeComponent } from './shared/home/home.component';
 
 import { ArticlesSectionModule } from './articles-section/articles-section.module';
 import { AuthComponent } from './auth/auth.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
+import { InterceptorInterceptor } from './interceptor/interceptor.interceptor';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { AuthModule } from './auth/auth.module';
     AuthModule
  
   ],
-  providers: [DataService],
+  providers: [DataService, 
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

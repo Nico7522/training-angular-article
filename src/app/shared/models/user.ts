@@ -13,9 +13,15 @@ export type User = {
     status: string;
     avatar: string;
     recipes?: any[];
+    token: string;
 }
 
 export type UserLogin = {
     email: string;
     password: string;
+}
+
+export type UserResponse = {
+    result : {token: string, user: User}
+    statusCode: number
 }
