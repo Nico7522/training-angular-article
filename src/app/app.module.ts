@@ -10,15 +10,20 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './shared/home/home.component';
 
 import { ArticlesSectionModule } from './articles-section/articles-section.module';
+import { AuthComponent } from './auth/auth.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from './auth/auth.module';
 
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, FooterComponent, HomeComponent],
+  declarations: [AppComponent, NavbarComponent, FooterComponent, HomeComponent, AuthComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ArticlesSectionModule,
+    HttpClientModule,
+    AuthModule
  
   ],
   providers: [DataService],
