@@ -14,10 +14,11 @@ import { AuthComponent } from './auth/auth.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
 import { InterceptorInterceptor } from './interceptor/interceptor.interceptor';
+import { ShopComponent } from './shop/shop.component';
 
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, FooterComponent, HomeComponent, AuthComponent],
+  declarations: [AppComponent, NavbarComponent, FooterComponent, HomeComponent, AuthComponent, ShopComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
