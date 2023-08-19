@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { DataService } from '../shared/services/data.service';
 import { Article } from '../shared/models/article';
-import { CommonModule } from '@angular/common';
-import { NextObserver, Observer } from 'rxjs';
 
 @Component({
-  selector: 'app-articles-section',
+  
+  selector: 'app-articles-section, TestDirective',
   templateUrl: './articles-section.html',
-  styleUrls: ['./articles-section.css']
+  styleUrls: ['./articles-section.css'],
+  
 })
 export class ArticlesSectionComponent {
+pain: any;
   constructor(private articleList: DataService) {
     this.articleList.$filteredProduct.subscribe((val: Article[] ) => {
       this.articles = val

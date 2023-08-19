@@ -15,6 +15,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
 import { InterceptorInterceptor } from './interceptor/interceptor.interceptor';
 import { ShopComponent } from './shop/shop.component';
+import { TestDirective } from './directives/test.directive';
 
 
 @NgModule({

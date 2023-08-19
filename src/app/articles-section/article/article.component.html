@@ -1,6 +1,6 @@
- <div class="card articleInfo" style="width: 18rem">
+ <div testDirective [name]="titleArticle" class="card articleInfo" style="width: 18rem">
   <img [src]="img" class="card-img-top" [alt]="alt" />
-  <div class="card-body">
+  <div  class="card-body">
     <app-title [titleArticle]="titleArticle" [availabe]="availabe" />
     <app-price [priceArticle]="priceArticle" />
     <h3>{{description}}</h3>
