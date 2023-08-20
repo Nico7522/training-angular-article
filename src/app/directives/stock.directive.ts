@@ -1,7 +1,7 @@
 import { Directive, ElementRef, HostListener, Input, OnChanges, Renderer2, SimpleChanges } from '@angular/core';
 
 @Directive({
-  selector: '[stockDirective]'
+  selector: '[stock]'
 })
 export class StockDirective implements OnChanges {
   @Input() stock!: boolean; 

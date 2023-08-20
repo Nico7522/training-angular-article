@@ -16,7 +16,7 @@ import { loginGuard } from './guard/login.guard';
 const routes: Routes = [
   {path: '', component: HomeComponent  },
   {path: 'last', component: LastArticleComponent },
-  {path: 'article', component: ArticlesSectionComponent, loadChildren: () => import('./articles-section/articles-section.module').then(m => ArticlesSectionModule) },
+  {path: 'article', component: ArticlesSectionComponent, loadChildren: () => import('./articles-section/articles-section.module').then(m => m.ArticlesSectionModule) },
   {path: "login", component: AuthComponent, loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)},
   {path: "commande", component: ShopComponent, canActivate: [loginGuard], loadChildren: () => import('./shop/shop.module').then(m => m.ShopModule)}
   

@@ -15,6 +15,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
 import { InterceptorInterceptor } from './interceptor/interceptor.interceptor';
 import { ShopComponent } from './shop/shop.component';
+import { RegisterComponent } from './auth/register/register.component';
 
 
 
@@ -30,7 +31,7 @@ import { ShopComponent } from './shop/shop.component';
  
   ],
   providers: [DataService, 
-    { provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true }],
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true }, RegisterComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

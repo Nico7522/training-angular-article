@@ -1,18 +1,19 @@
 <div class="register">
-    <h2>S'inscrire</h2>
-    <form [formGroup]="registerForm">
-        <label for="">Name</label>
-        <input type="text">
-        <label for="">Surname</label>
-        <input type="text">
-        <label for="">Année de naissance</label>
-        <input type="date">
-        <label for="">Email</label>
-        <input type="email">
-        <label for="">Mot de passe</label>
-        <input type="password">
-        <button type="submit" class="btn btn-primary">S'inscrire</button>
-    </form>
-    <button class="btn btn-primary"><a routerLink="/login">Déjà un compte ?</a></button>
-    
+  <h2>S'inscrire</h2>
+  <form [formGroup]="registerForm">
+    <label for="">Name</label>
+    <input formControlName="name" type="text" />
+    <label for="">Surname</label>
+    <input formControlName="surname" type="text" />
+    <label for="">Année de naissance</label>
+    <input formControlName="birthdate" type="date" />
+    <label for="">Email</label>
+    <input formControlName="email" type="email" />
+    <label for="">Mot de passe</label>
+    <input formControlName="password" type="password" />
+    <button [disabled]="!registerForm.valid" type="submit" class="btn btn-primary">S'inscrire</button>
+  </form>
+
+  <a class="btn btn-primary" routerLink="/login">Déja un compte ?</a>
+
 </div>

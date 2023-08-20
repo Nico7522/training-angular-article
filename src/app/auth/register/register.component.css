@@ -1,37 +1,44 @@
 .register {
-    border: solid black 2px;
-    width: 50%;
-    height: 450px;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  border: solid black 2px;
+  width: 50%;
+  height: 450px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.register > h2, p, a {
-    text-align: center;
+.register > h2,
+p,
+a {
+  text-align: center;
 }
 .btn {
-    width: 20%;
-    margin-top: 10px;
+  display: inline-block;
+  margin-top: 10px;
 }
 .btn > a {
-    color: black;
+  color: black;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  display: block;
+  text-align: center;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    
+  display: flex;
+  flex-direction: column;
 }
 
 label {
-    text-align: center;
+  text-align: center;
 }
 
 form > .btn {
-    width: 50%;
-    margin: auto;
-    margin-top: 5px;
-
+  width: 50%;
+  margin: auto;
+  margin-top: 5px;
 }
