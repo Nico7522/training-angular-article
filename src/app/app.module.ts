@@ -30,8 +30,7 @@ import { RegisterComponent } from './auth/register/register.component';
     AuthModule
  
   ],
-  providers: [DataService, 
-    { provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true }, RegisterComponent],
+  providers: [DataService, { provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true }, RegisterComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

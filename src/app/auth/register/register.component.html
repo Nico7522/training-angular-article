@@ -1,19 +1,37 @@
 <div class="register">
   <h2>S'inscrire</h2>
   <form [formGroup]="registerForm">
-    <label for="">Name</label>
-    <input formControlName="name" type="text" />
-    <label for="">Surname</label>
-    <input formControlName="surname" type="text" />
-    <label for="">Année de naissance</label>
-    <input formControlName="birthdate" type="date" />
-    <label for="">Email</label>
-    <input formControlName="email" type="email" />
-    <label for="">Mot de passe</label>
-    <input formControlName="password" type="password" />
-    <button [disabled]="!registerForm.valid" type="submit" class="btn btn-primary">S'inscrire</button>
+    <div>
+      <label for="">Name</label>
+      <input formControlName="name" type="text" />
+      <p *ngIf="hasErrorAndTouched(registerForm, 'name', 'required')">
+        Ce champ est requis
+      </p>
+    </div>
+    <div>
+      <label for="">Surname</label>
+      <input formControlName="surname" type="text" />
+    </div>
+    <div>
+      <label for="">Année de naissance</label>
+      <input formControlName="birthdate" type="date" />
+    </div>
+    <div>
+      <label for="">Email</label>
+      <input formControlName="email" type="email" />
+    </div>
+    <div>
+      <label for="">Mot de passe</label>
+      <input formControlName="password" type="password" />
+    </div>
+    <button
+      [disabled]="!registerForm.valid"
+      type="submit"
+      class="btn btn-primary"
+    >
+      S'inscrire
+    </button>
   </form>
 
   <a class="btn btn-primary" routerLink="/login">Déja un compte ?</a>
-
 </div>
