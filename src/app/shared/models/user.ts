@@ -21,7 +21,12 @@ export type UserLogin = {
     password: string;
 }
 
+export type Result = {
+    token: string;
+    user: User;
+}
+
 export type UserResponse = {
-    result : {token: string, user: User}
+    result : Result;
     statusCode: number
 }

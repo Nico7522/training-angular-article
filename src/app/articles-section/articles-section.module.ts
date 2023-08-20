@@ -13,7 +13,8 @@ import { DetailsComponent } from './article/details/details.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { CategorieSelectedComponent } from './categories/categorie-selected/categorie-selected.component';
 import { SharedModule } from '../shared/shared.module';
-import { TestDirective } from '../directives/test.directive';
+import { StockDirective } from '../directives/stock.directive';
+
 
 
 
@@ -30,7 +31,7 @@ import { TestDirective } from '../directives/test.directive';
     DetailsComponent,
     CategoriesComponent,
     CategorieSelectedComponent,
-    TestDirective
+    StockDirective
   
   ],
   
