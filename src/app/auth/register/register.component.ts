@@ -11,8 +11,9 @@ import {
 import { AuthService } from 'src/app/services/auth.service';
 import { RegisterGuard } from 'src/app/shared/interfaces/guard.interface';
 import { UserLogin } from 'src/app/shared/models/user';
-import { checkAge } from 'src/app/utils/function';
+import { checkAge, hasErrorAndTouched } from 'src/app/utils/function';
 import { environment } from 'src/environment/environment';
+
 
 @Component({
   selector: 'app-register',
@@ -24,6 +25,7 @@ export class RegisterComponent implements OnInit, RegisterGuard {
   mailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
   passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
   registerForm: FormGroup;
+  hasErrorAndTouched = hasErrorAndTouched
   constructor(private _authService: AuthService, private _fb: FormBuilder) {
     this.registerForm = this._fb.group({
       name: ['', [Validators.required]],
@@ -62,14 +64,5 @@ export class RegisterComponent implements OnInit, RegisterGuard {
     });
   }
 
-  hasErrorAndTouched(
-    form: FormGroup,
-    input: string,
-    valiator: string
-  ): boolean | undefined {
-    return (
-      form.get(input)?.hasError(valiator) &&
-      (form.get(input)?.touched || form.get(input)?.dirty)
-    );
-  }
+
 }

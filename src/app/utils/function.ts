@@ -1,5 +1,15 @@
-import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
+import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn } from "@angular/forms";
 
+export function hasErrorAndTouched(
+    form: FormGroup,
+    input: string,
+    valiator: string
+  ): boolean | undefined {
+    return (
+      form.get(input)?.hasError(valiator) &&
+      (form.get(input)?.touched || form.get(input)?.dirty)
+    );
+  }
 export function checkAge(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       let actualDate = new Date();
