@@ -30,6 +30,17 @@ export class AuthService {
       
       return response
     }))
+  };
+
+  register(user: UserLogin): Observable<UserResponse> {
+    return this._httpClient.post<UserResponse>(`${environment.apiUrl}/register`, user).pipe(map(res => {
+      console.log(res);
+      return res
+      
+    })
+      
+      
+    )
   }
 
   isConnected(): boolean {

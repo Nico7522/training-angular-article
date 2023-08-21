@@ -51,17 +51,13 @@ export class RegisterComponent implements OnInit, RegisterGuard {
   }
 
   handleSubmit() {
-    console.log(this.registerForm.get('birthdate')?.errors);
+    if (this.registerForm.valid) {
+      this._authService.register(this.registerForm.value).subscribe(res => console.log(res)
+      )
+    }
   }
   ngOnInit(): void {
-    let userLogin: UserLogin = {
-      email: environment.email,
-      password: environment.password,
-    };
 
-    this._authService.login(userLogin).subscribe({
-      next: (res) => console.log(res),
-    });
   }
 
 
