@@ -1,27 +1,29 @@
 <div class="register">
   <h2>S'inscrire</h2>
-  <form [formGroup]="registerForm">
+  <form (ngSubmit)="handleSubmit()" [formGroup]="registerForm">
     <div>
-      <label for="">Name</label>
+      <label for="name">Name</label>
       <input formControlName="name" type="text" />
       <p *ngIf="hasErrorAndTouched(registerForm, 'name', 'required')">
         Ce champ est requis
       </p>
     </div>
     <div>
-      <label for="">Surname</label>
+      <label for="surname">Surname</label>
       <input formControlName="surname" type="text" />
     </div>
     <div>
-      <label for="">Année de naissance</label>
+      <label for="birthdate">Année de naissance</label>
       <input formControlName="birthdate" type="date" />
+      <p *ngIf="hasErrorAndTouched(registerForm, 'birthdate', 'required')">Ce champ est requis</p>
+      <p *ngIf="hasErrorAndTouched(registerForm, 'birthdate', 'notMajor')">Vous devez être majeur</p>
     </div>
     <div>
-      <label for="">Email</label>
+      <label for="email">Email</label>
       <input formControlName="email" type="email" />
     </div>
     <div>
-      <label for="">Mot de passe</label>
+      <label for="password">Mot de passe</label>
       <input formControlName="password" type="password" />
     </div>
     <button
@@ -35,3 +37,4 @@
 
   <a class="btn btn-primary" routerLink="/login">Déja un compte ?</a>
 </div>
+{{registerForm.valid| json}}

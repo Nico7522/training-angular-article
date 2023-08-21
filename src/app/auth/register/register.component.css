@@ -28,9 +28,11 @@ a {
   text-align: center;
 }
 
-form {
+form, form > div {
   display: flex;
   flex-direction: column;
+  
+
 }
 
 label {
