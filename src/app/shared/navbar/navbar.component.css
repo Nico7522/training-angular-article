@@ -2,3 +2,15 @@ input {
     width: 20%;
 }
 
+.loggedUser {
+    position: relative;
+    border: solid black 1px;
+    width: 100px;
+}
+
+.user {
+    /* position: absolute; */
+    margin: auto;
+    text-align: center;
+    font-size: 0.9rem;
+}
