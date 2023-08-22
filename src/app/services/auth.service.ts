@@ -9,15 +9,17 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root',
 })
 export class AuthService {
-
-  // toutes les données de l'utilisateur 
-  private _currentUserSubject: BehaviorSubject<User | null> = new BehaviorSubject<User | null>(null);
+  // toutes les données de l'utilisateur
+  private _currentUserSubject: BehaviorSubject<User | null> =
+    new BehaviorSubject<User | null>(null);
   $currentUser = this._currentUserSubject.asObservable();
 
   // Username pour set le cookie
-  username: string = this._cookieService.get('name') 
-  private _userName: BehaviorSubject<string | null> = new BehaviorSubject<string | null>(this.username);
-    $userName = this._userName.asObservable();
+  username: string = this._cookieService.get('name');
+  private _userName: BehaviorSubject<string | null> = new BehaviorSubject<
+    string | null
+  >(this.username);
+  $userName = this._userName.asObservable();
 
   public get currentUserValue(): User | null {
     return this._currentUserSubject.value;
@@ -26,7 +28,6 @@ export class AuthService {
     private _httpClient: HttpClient,
     private _tokenService: TokenService,
     private _cookieService: CookieService
-    
   ) {}
   setToken(token: string): void {
     this._currentUserSubject.subscribe({
@@ -42,12 +43,10 @@ export class AuthService {
     return this._httpClient
       .post<UserResponse>(`${environment.apiUrl}/login`, user)
       .pipe(
-        map((res) => {  
+        map((res) => {
           this._tokenService.saveToken(res.token.token);
           this._currentUserSubject.next({ ...res.user });
-          this._cookieService.set('name', res.user.name)
-          let name = this._cookieService.get('name')
-          this._userName.next(name)
+          this.setInfoCookie(res.user)
           return res;
         })
       );
@@ -60,12 +59,16 @@ export class AuthService {
         map((res) => {
           this._tokenService.saveToken(res.token.token);
           this._currentUserSubject.next({ ...res.user });
-          this._cookieService.set('name', res.user.name)
-          let name = this._cookieService.get('name')
-          this._userName.next(name)
+          this.setInfoCookie(res.user)
           return res;
         })
       );
+  }
+
+  setInfoCookie(user: User): void {
+    this._cookieService.set('name', user.name);
+    let name = this._cookieService.get('name');
+    this._userName.next(name);
   }
 
   isConnected(): boolean {
