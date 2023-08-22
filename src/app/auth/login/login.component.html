@@ -1,5 +1,37 @@
 <div class="login">
-    <h2>Se connecter</h2>
-    <p>ICI ON POURRA SE CONNECTER</p>
-    <a class="btn btn-primary" routerLink="/register">Créer un compte</a>
+  <h2>Se connecter</h2>
+  <form (ngSubmit)="handleSubmit()" [formGroup]="loginForm">
+    <div>
+      <label for="email">Email</label>
+      <input formControlName="email" type="email" />
+      <p *ngIf="hasErrorAndTouched(loginForm, 'email', 'required')">
+        Ce champ est requis
+      </p>
+      <p *ngIf="hasErrorAndTouched(loginForm, 'email', 'pattern')">
+        Mail invalid
+      </p>
+    </div>
+    <div>
+      <label for="password">Mot de passe</label>
+      <input formControlName="password" type="password" />
+      <p *ngIf="hasErrorAndTouched(loginForm, 'password', 'required')">
+        Ce champ est requis
+      </p>
+      <p *ngIf="hasErrorAndTouched(loginForm, 'password', 'pattern')">
+        Mot de passe invalid
+      </p>
+    </div>
+    <button
+    [disabled]="!loginForm.valid"
+    type="submit"
+    class="btn btn-primary"
+  >
+    Se connecter
+  </button>
+  </form>
+  <a class="btn btn-primary" routerLink="/register">Créer un compte</a>
+
+  <div>
+    <p class="status" *ngIf="status">{{status}}</p>
+  </div>
 </div>

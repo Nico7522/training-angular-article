@@ -16,6 +16,7 @@ import { AuthModule } from './auth/auth.module';
 import { InterceptorInterceptor } from './interceptor/interceptor.interceptor';
 import { ShopComponent } from './shop/shop.component';
 import { RegisterComponent } from './auth/register/register.component';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -30,7 +31,7 @@ import { RegisterComponent } from './auth/register/register.component';
     AuthModule
  
   ],
-  providers: [DataService, { provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true }, RegisterComponent],
+  providers: [DataService, { provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true }, RegisterComponent, CookieService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

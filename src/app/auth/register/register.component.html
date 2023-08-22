@@ -11,6 +11,8 @@
     <div>
       <label for="surname">Surname</label>
       <input formControlName="surname" type="text" />
+      <p *ngIf="hasErrorAndTouched(registerForm, 'surname', 'required')">Ce champ est requis</p>
+
     </div>
     <div>
       <label for="birthdate">Année de naissance</label>
@@ -21,10 +23,16 @@
     <div>
       <label for="email">Email</label>
       <input formControlName="email" type="email" />
+      <p *ngIf="hasErrorAndTouched(registerForm, 'email', 'required')">Ce champ est requis</p>
+      <p *ngIf="hasErrorAndTouched(registerForm, 'email', 'pattern')">Mail invalid</p>
+
     </div>
     <div>
       <label for="password">Mot de passe</label>
       <input formControlName="password" type="password" />
+      <p *ngIf="hasErrorAndTouched(registerForm, 'password', 'required')">Ce champ est requis</p>
+      <p *ngIf="hasErrorAndTouched(registerForm, 'password', 'pattern')">Mot de passe invalid</p>
+
     </div>
     <button
       [disabled]="!registerForm.valid"

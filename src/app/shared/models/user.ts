@@ -1,3 +1,4 @@
+
 export type UserRequest = {
     results: User[];
     numberOfRows: number;
@@ -8,12 +9,13 @@ export type User = {
     id: number;
     name: string;
     surname: string;
-    birthdate: Date;
+    birthdate?: Date;
     email: string;
-    status: string;
-    avatar: string;
-    recipes?: any[];
-    token: string;
+    token?: string;
+    remember_me_token: string | null;
+    updated_at: Date;
+
+ 
 }
 
 export type UserLogin = {
@@ -26,7 +28,13 @@ export type Result = {
     user: User;
 }
 
+export type TokenResponse = {
+    type: string;
+    token: string;
+    expires_ar: Date
+}
+
 export type UserResponse = {
-    result : Result;
-    statusCode: number
+    user : User;
+    token: TokenResponse
 }

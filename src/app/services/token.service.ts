@@ -8,9 +8,7 @@ export class TokenService {
 
   constructor() { }
 
-  saveToken(token: any): void {
-    console.log('token', token);
-    
+  saveToken(token: string): void {  
     sessionStorage.setItem("token", JSON.stringify(token))
   }
 
