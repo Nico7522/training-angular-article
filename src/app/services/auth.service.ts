@@ -47,7 +47,7 @@ export class AuthService {
       })
       .pipe(
         map((res) => {
-          const name = localStorage.setItem('name', res.user.name)
+          localStorage.setItem('name', res.user.name)
           this._userName.next(res.user.name);
 
           this._tokenService.saveToken(res.token.token);
