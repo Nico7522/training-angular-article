@@ -7,14 +7,14 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { RegisterComponent } from '../auth/register/register.component';
-import { RegisterGuard } from '../shared/interfaces/guard.interface';
+import { isDirty } from '../shared/interfaces/guard.interface';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UnsubmitGuard implements CanDeactivate<RegisterGuard> {
+export class UnsubmitGuard implements CanDeactivate<isDirty> {
   canDeactivate(
-    component: RegisterGuard,
+    component: isDirty,
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot

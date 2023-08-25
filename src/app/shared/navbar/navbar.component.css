@@ -14,3 +14,7 @@ input {
     text-align: center;
     font-size: 0.9rem;
 }
+
+li > .disconnect {
+    cursor: pointer;
+}

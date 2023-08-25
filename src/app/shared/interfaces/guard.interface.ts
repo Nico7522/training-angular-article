@@ -1,3 +1,3 @@
-export interface RegisterGuard {
+export interface isDirty {
     isDirty(): boolean
 }

@@ -6,11 +6,11 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { RegisterComponent } from '../auth/register/register.component';
-import { RegisterGuard } from '../shared/interfaces/guard.interface';
+import { isDirty } from '../shared/interfaces/guard.interface';
 
-// Guard version fonction avec interface en type générique
-// export const dirtyGuard: CanDeactivateFn<RegisterGuard> = (
-//   component: RegisterGuard,
+// Guard version fonction avec component en type générique
+// export const dirtyGuard: CanDeactivateFn<RegisterComponent> = (
+//   component: RegisterComponent,
 //   route: ActivatedRouteSnapshot,
 //   state: RouterStateSnapshot
 // ):
@@ -23,9 +23,9 @@ import { RegisterGuard } from '../shared/interfaces/guard.interface';
 //   );
 // };
 
-// Guard version fonction avec component en type générique
-export const dirtyGuard: CanDeactivateFn<RegisterComponent> = (
-  component: RegisterComponent,
+// Guard version fonction avec interface en type générique
+export const dirtyGuard: CanDeactivateFn<isDirty> = (
+  component: isDirty,
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
 ):

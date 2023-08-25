@@ -15,7 +15,7 @@ export class AuthService {
   $currentUser = this._currentUserSubject.asObservable();
 
   // Username pour set le cookie
-  username: string | null = localStorage.getItem('name')
+  username: string | null = localStorage.getItem('name');
 
   private _userName: BehaviorSubject<string | null> = new BehaviorSubject<
     string | null
@@ -47,11 +47,26 @@ export class AuthService {
       })
       .pipe(
         map((res) => {
-          localStorage.setItem('name', res.user.name)
+          localStorage.setItem('name', res.user.name);
           this._userName.next(res.user.name);
 
           this._tokenService.saveToken(res.token.token);
           this._currentUserSubject.next({ ...res.user });
+
+          return res;
+        })
+      );
+  }
+
+  logout(): Observable<any> {
+    return this._httpClient
+      .get<any>(`${environment.apiUrl}/logout`, { withCredentials: true })
+      .pipe(
+        map((res) => {
+          this._userName.next(null);
+          localStorage.clear();
+          sessionStorage.clear();
+          console.log(res);
           
           return res;
         })

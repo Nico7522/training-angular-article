@@ -22,9 +22,7 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/article">Articles</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/commande">Commandes</a>
-        </li>
+      
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <!-- TODO : Mettre dans un composant appart -->
@@ -40,12 +38,13 @@
           </a>
           <ul class="dropdown-menu">
             <li>
-              <a class="dropdown-item" routerLink="/categories/pain">Profil</a>
+              <a class="dropdown-item" routerLink="/user/profil">Profil</a>
             </li>
             <li>
-              <a class="dropdown-item" routerLink="/categories/baguette"
-                >Se déconnecter</a
-              >
+              <a class="dropdown-item" routerLink="/user/commande">Commande</a>
+            </li>
+            <li>
+              <a class="dropdown-item disconnect" (click)="logout()">Se déconnecter</a>
             </li>
           </ul>
         </li>

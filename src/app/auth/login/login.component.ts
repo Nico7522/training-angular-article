@@ -5,12 +5,13 @@ import { hasErrorAndTouched } from '../../utils/function';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { isDirty } from 'src/app/shared/interfaces/guard.interface';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
 })
-export class LoginComponent implements OnInit, OnDestroy {
+export class LoginComponent implements OnInit, OnDestroy, isDirty {
   hasErrorAndTouched = hasErrorAndTouched;
   loginForm: FormGroup;
   mailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
@@ -65,6 +66,10 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
       clearTimeout(this.timeout)
+  }
+
+  isDirty(): boolean {
+    return this.loginForm.dirty;
   }
 }
 

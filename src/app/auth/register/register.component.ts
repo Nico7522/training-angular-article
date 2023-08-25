@@ -9,7 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth.service';
-import { RegisterGuard } from 'src/app/shared/interfaces/guard.interface';
+import { isDirty } from 'src/app/shared/interfaces/guard.interface';
 import { UserLogin } from 'src/app/shared/models/user';
 import { checkAge, hasErrorAndTouched } from 'src/app/utils/function';
 import { environment } from 'src/environment/environment';
@@ -21,7 +21,7 @@ import { environment } from 'src/environment/environment';
   styleUrls: ['./register.component.css'],
 })
 @Injectable()
-export class RegisterComponent implements OnInit, RegisterGuard {
+export class RegisterComponent implements OnInit, isDirty  {
   mailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
   passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
   registerForm: FormGroup;
