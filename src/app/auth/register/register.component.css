@@ -8,6 +8,23 @@
   align-items: center;
 }
 
+.adresse {
+  border: solid black 1px;
+  border-radius: 10px;
+  width: 70%;
+  margin: auto;
+  margin-top: 5px;
+  padding-bottom: 5px;
+}
+.adresse > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h4 {
+  text-align: center;
+}
 .register > h2,
 p,
 a {
@@ -28,11 +45,15 @@ a {
   text-align: center;
 }
 
-form, form > div {
-  display: flex;
-  flex-direction: column;
-  
+form {
+  width: 100%;
+}
 
+form,
+form > div {
+  display: flex;
+
+  flex-direction: column;
 }
 
 label {
@@ -40,13 +61,15 @@ label {
 }
 
 form > .btn {
-  width: 50%;
   margin: auto;
   margin-top: 5px;
 }
 
 input {
   border-radius: 20px;
+  text-align: center;
+  width: 30%;
+  margin: auto;
 }
 
 a {
@@ -54,5 +77,10 @@ a {
 }
 
 p {
-  color: red
+  color: red;
+}
+
+input[type="number"] {
+  width: 30%;
+  border-radius: 0px;
 }

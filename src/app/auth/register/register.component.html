@@ -11,27 +11,59 @@
     <div>
       <label for="surname">Surname</label>
       <input formControlName="surname" type="text" />
-      <p *ngIf="hasErrorAndTouched(registerForm, 'surname', 'required')">Ce champ est requis</p>
-
+      <p *ngIf="hasErrorAndTouched(registerForm, 'surname', 'required')">
+        Ce champ est requis
+      </p>
     </div>
     <div>
       <label for="birthdate">Année de naissance</label>
       <input formControlName="birthdate" type="date" />
-      <p *ngIf="hasErrorAndTouched(registerForm, 'birthdate', 'required')">Ce champ est requis</p>
-      <p *ngIf="hasErrorAndTouched(registerForm, 'birthdate', 'notMajor')">Vous devez être majeur</p>
+      <p *ngIf="hasErrorAndTouched(registerForm, 'birthdate', 'required')">
+        Ce champ est requis
+      </p>
+      <p *ngIf="hasErrorAndTouched(registerForm, 'birthdate', 'notMajor')">
+        Vous devez être majeur
+      </p>
     </div>
     <div>
       <label for="email">Email</label>
       <input formControlName="email" type="email" />
-      <p *ngIf="hasErrorAndTouched(registerForm, 'email', 'required')">Ce champ est requis</p>
-      <p *ngIf="hasErrorAndTouched(registerForm, 'email', 'pattern')">Mail invalid</p>
-
+      <p *ngIf="hasErrorAndTouched(registerForm, 'email', 'required')">
+        Ce champ est requis
+      </p>
+      <p *ngIf="hasErrorAndTouched(registerForm, 'email', 'pattern')">
+        Mail invalid
+      </p>
     </div>
     <div>
       <label for="password">Mot de passe</label>
       <input formControlName="password" type="password" />
-      <p *ngIf="hasErrorAndTouched(registerForm, 'password', 'required')">Ce champ est requis</p>
-      <p *ngIf="hasErrorAndTouched(registerForm, 'password', 'pattern')">Mot de passe invalid</p>
+      <p *ngIf="hasErrorAndTouched(registerForm, 'password', 'required')">
+        Ce champ est requis
+      </p>
+      <p *ngIf="hasErrorAndTouched(registerForm, 'password', 'pattern')">
+        Mot de passe invalid
+      </p>
+    </div>
+
+    <div formGroupName="adresse" class="adresse">
+      <h4>Adresse</h4>
+      <div>
+        <label for="zip">code postal</label>
+        <input formControlName="zip" type="number" />
+      </div>
+      <div>
+        <label for="city">Ville</label>
+        <input formControlName="city" />
+      </div>
+      <div>
+        <label for="street">Rue</label>
+        <input formControlName="street" />
+      </div>
+      <div>
+        <label for="numero">Numéro</label>
+        <input formControlName="numero" type="number" />
+      </div>
 
     </div>
     <button

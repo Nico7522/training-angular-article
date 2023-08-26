@@ -14,18 +14,17 @@ import { UserLogin } from 'src/app/shared/models/user';
 import { checkAge, hasErrorAndTouched } from 'src/app/utils/function';
 import { environment } from 'src/environment/environment';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
 @Injectable()
-export class RegisterComponent implements OnInit, isDirty  {
+export class RegisterComponent implements OnInit, isDirty {
   mailPattern = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
   passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
   registerForm: FormGroup;
-  hasErrorAndTouched = hasErrorAndTouched
+  hasErrorAndTouched = hasErrorAndTouched;
   constructor(private _authService: AuthService, private _fb: FormBuilder) {
     this.registerForm = this._fb.group({
       name: ['', [Validators.required]],
@@ -43,6 +42,13 @@ export class RegisterComponent implements OnInit, isDirty  {
         '',
         [Validators.required, Validators.pattern(this.passwordPattern)],
       ],
+
+      adresse: new FormGroup({
+        zip: new FormControl('', [Validators.required]),
+        street: new FormControl('', [Validators.required]),
+        city: new FormControl('', [Validators.required]),
+        numero: new FormControl('', [Validators.required]),
+      }),
     });
   }
 
@@ -52,13 +58,8 @@ export class RegisterComponent implements OnInit, isDirty  {
 
   handleSubmit() {
     if (this.registerForm.valid) {
-      this._authService.register(this.registerForm.value).subscribe(res => console.log(res)
-      )
+      this._authService.register(this.registerForm.value);
     }
   }
-  ngOnInit(): void {
-
-  }
-
-
+  ngOnInit(): void {}
 }
