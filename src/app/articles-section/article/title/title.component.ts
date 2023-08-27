@@ -6,7 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./title.component.css']
 })
 export class TitleComponent {
-  @Input() titleArticle = ''
+  @Input() title = ''
   @Input() availabe = true
 
   getColor(): string {

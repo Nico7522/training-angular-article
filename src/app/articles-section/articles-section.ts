@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { DataService } from '../shared/services/data.service';
 import { Article } from '../shared/models/article';
+import { ProductService } from '../services/product.service';
+import { Product } from '../shared/models/product';
 
 @Component({
   
@@ -11,12 +13,14 @@ import { Article } from '../shared/models/article';
 })
 export class ArticlesSectionComponent {
 pain: any;
-  constructor(private articleList: DataService) {
+
+  constructor(private articleList: DataService, private productService: ProductService) {
     this.articleList.$filteredProduct.subscribe((val: Article[] ) => {
       this.articles = val
     })
   }
   articles: Article[] = []
+  products: Product[] = []
   title = 'labonneaffaire';
   message: string = ""
   getMessage(message: string) {
@@ -24,5 +28,8 @@ pain: any;
   }
   ngOnInit(): void {
     this.articles = this.articleList.articleList
+    this.productService.getProducts().subscribe({
+      next: (products) => this.products = products
+    })
 }
 }

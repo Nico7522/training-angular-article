@@ -2,6 +2,9 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Article } from '../models/article';
 import { BehaviorSubject, Subscription } from 'rxjs';
+import { ProductService } from 'src/app/services/product.service';
+import { Product } from '../models/product';
+import { environment } from 'src/environment/environment';
 
 @Component({
   selector: 'app-modal-details',
@@ -9,10 +12,13 @@ import { BehaviorSubject, Subscription } from 'rxjs';
   styleUrls: ['./modal-details.component.css'],
 })
 export class ModalDetailsComponent implements OnDestroy {
-  product?: Article;
+  product?: Product;
   productSub?: Subscription;
-  constructor(private list: DataService) {
-    this.productSub = this.list.$product.subscribe((prod) => {
+  urlImg: string = environment.apiUrlImg
+  constructor(private list: DataService, private _productList: ProductService) {
+    this.productSub = this._productList.$product.subscribe((prod) => {
+      console.log(prod);
+      
       this.product = prod;
     });
 
@@ -28,6 +34,6 @@ ngOnDestroy(): void {
   @Input() descriptionArticle: string = '';
 
   getProduct(val: number) {
-    this.list.getById(val);
+    this._productList.getById(val);
   }
 }

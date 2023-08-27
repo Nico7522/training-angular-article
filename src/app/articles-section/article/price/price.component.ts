@@ -6,5 +6,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./price.component.css']
 })
 export class PriceComponent {
-@Input() priceArticle: number = 0
+@Input() price: number = 0
 }

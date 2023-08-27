@@ -8,9 +8,9 @@ import { DataService } from 'src/app/shared/services/data.service';
 })
 export class ArticleComponent {
   
-@Input() titleArticle: string = "";
-@Input() priceArticle: number = 12;
-@Input() availabe: boolean = true
+@Input() title: string = "";
+@Input() price: number = 12;
+// @Input() availabe: boolean = true
 @Input() description: string = ""
 @Input() id: number = 0
 @Input() liked: number = 0

@@ -13,7 +13,7 @@
     <div id="alertMsg">
       <p>{{ message }}</p>
     </div>
-    <div testDirective id="home">
+    <!-- <div testDirective id="home">
       <app-article  *ngFor="let article of articles"
       [id]="article.id"
       [titleArticle]="article.titleArticle"
@@ -27,6 +27,16 @@
       [img]="article.urlImg"
       [alt]="article.textAltImg"
      
+      />
+    </div> -->
+    <div testDirective id="home">
+      <app-article *ngFor="let product of products"
+      [id]="product.id"
+      [title]="product.title"
+      [price]="product.price"
+      [description]="product.description"
+      [img]="'http://localhost:8080/'+ product.img"
+
       />
     </div>
   

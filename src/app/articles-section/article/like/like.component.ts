@@ -15,7 +15,7 @@ export class LikeComponent implements OnInit {
   @Input() disliked!: number;
   @Input() isLiked!: boolean
   @Input() isDisliked!: boolean
-  @Input() titleArticle: string = '';
+  @Input() title: string = '';
   @Input() id!: number;
 
 

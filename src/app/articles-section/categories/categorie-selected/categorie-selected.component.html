@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <div class="card articleInfo" *ngFor="let article of filteredArticle">
     <img
       [src]="article.urlImg"
@@ -10,10 +10,10 @@
         [titleArticle]="article.titleArticle"
         [availabe]="article.available"
       />
-      <app-price [priceArticle]="article.priceArticle" />
+      <app-price [price]="article.priceArticle" />
       <h3>{{ article.description }}</h3>
-      <!-- <app-like [totalNumberLike]="article.numberOfLike" [titleArticle]="article.titleArticle" (info)="getIsLiked($event)" /> -->
-      <!-- <app-comment [comment]="comment"/>   -->
+       <app-like [totalNumberLike]="article.numberOfLike" [titleArticle]="article.titleArticle" (info)="getIsLiked($event)" /> 
+       <app-comment [comment]="comment"/>   
     </div>
   </div>
-</div>
+</div> -->
