@@ -17,7 +17,7 @@ export class ModalDetailsComponent implements OnDestroy {
   urlImg: string = environment.apiUrlImg
   constructor(private list: DataService, private _productList: ProductService) {
     this.productSub = this._productList.$product.subscribe((prod) => {
-      console.log(prod);
+     
       
       this.product = prod;
     });

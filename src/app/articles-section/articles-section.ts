@@ -29,7 +29,10 @@ pain: any;
   ngOnInit(): void {
     this.articles = this.articleList.articleList
     this.productService.getProducts().subscribe({
-      next: (products) => this.products = products
+
+      next: (products) => {this.products = products;
+         console.log(products)
+      }
     })
 }
 }

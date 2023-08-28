@@ -14,3 +14,11 @@
 
 
 }
+
+.row-display {
+    display: flex;
+    margin-bottom: 2px;
+}
+.row-display > a {
+    margin-top: 2px ;
+}

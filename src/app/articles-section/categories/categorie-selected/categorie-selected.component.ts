@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Article } from 'src/app/shared/models/article';
+import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/shared/models/product';
-import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
   selector: 'app-categorie-selected',
@@ -12,22 +11,26 @@ import { DataService } from 'src/app/shared/services/data.service';
 export class CategorieSelectedComponent implements OnInit {
   filteredProduct: Product[] = [];
   constructor(
-    private articleList: DataService,
+    private _productService: ProductService,
     private route: ActivatedRoute
-  ) {}
+  ) {
+    
+  }
 
   ngOnInit(): void {
-    // const categorieSelected = this.route.snapshot.params['categorie']
-    
-    // if (categorieSelected) {
-    //   this.route.params.subscribe((params) => {
-    //       this.filteredProduct = this.articleList.articleList.filter((a) => {
-    //         return params['categorie'] === a.categorie;
-    //       });
-       
-    //   }); 
-    // } else {
-    //   this.filteredArticle = this.articleList.articleList
-    // }
+    const categorieSelected = this.route.snapshot.params['categorie'];
+    if (categorieSelected) {
+      this.route.params.subscribe((params) => {
+        this._productService.getProducts().subscribe({
+          next: (val) => {
+            console.log('dd');
+
+            this.filteredProduct = val.filter((p) => {
+              return p.categorie === params['categorie'];
+            });
+          },
+        });
+      });
+    }
   }
 }

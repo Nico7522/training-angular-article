@@ -3,16 +3,14 @@
     Catégories
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" routerLink="/article/categories/pain">Pain</a>
-    <a class="dropdown-item" routerLink="/article/categories/baguette">Baguette</a>
-    <a class="dropdown-item" routerLink="/article/categories/vienoisserie">Vienoisserie</a>
+    <a class="dropdown-item" routerLink="/article/categories/pizza">Pizza</a>
+    <a class="dropdown-item" routerLink="/article/categories/dessert">Dessert</a>
+    <a class="dropdown-item" routerLink="/article/categories/autre">Autre</a>
   </div>
 </div>
 
 <div  class="container">
-    <div id="alertMsg">
-      <p>{{ message }}</p>
-    </div>
+ 
     <!-- <div testDirective id="home">
       <app-article  *ngFor="let article of articles"
       [id]="article.id"
@@ -36,7 +34,7 @@
       [price]="product.price"
       [description]="product.description"
       [img]="'http://localhost:8080/'+ product.img"
-
+      [like]="product.like"
       />
     </div>
   

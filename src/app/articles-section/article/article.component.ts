@@ -13,7 +13,7 @@ export class ArticleComponent {
 // @Input() availabe: boolean = true
 @Input() description: string = ""
 @Input() id: number = 0
-@Input() liked: number = 0
+@Input() like!: number;
 @Input() disliked: number = 0
 @Input() isLiked!: boolean;
 @Input() isDisliked!: boolean;
