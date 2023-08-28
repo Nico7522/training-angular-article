@@ -18,6 +18,8 @@ export class CategorieSelectedComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
+    // TODO faire une requête api pour trier directement par filtre 
     const categorieSelected = this.route.snapshot.params['categorie'];
     if (categorieSelected) {
       this.route.params.subscribe((params) => {
