@@ -1,4 +1,4 @@
-<div class="categorie">
+<!-- <div class="categorie">
   <div class="productInfo" *ngFor="let product of filteredProduct">
     <img [src]="imgUrl + product.img"  />
     <div class="card-body">
@@ -30,4 +30,39 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
+<div  class="container">
+ 
+  <!-- <div testDirective id="home">
+    <app-article  *ngFor="let article of articles"
+    [id]="article.id"
+    [titleArticle]="article.titleArticle"
+    [priceArticle]="article.priceArticle"
+    [description]="article.description"
+    [availabe]="article.available"
+    [liked]="article.numberOfLike"
+    [disliked]="article.numberOfDislike"
+    [isLiked]="article.isLiked"
+    [isDisliked]="article.isDisliked"
+    [img]="article.urlImg"
+    [alt]="article.textAltImg"
+   
+    />
+  </div> -->
+  <div testDirective class="home">
+    <app-article *ngFor="let product of filteredProduct"
+    [id]="product.id"
+    [title]="product.title"
+    [price]="product.price"
+    [description]="product.description"
+    [img]="'http://localhost:8080/'+ product.img"
+    [like]="product.like"
+    />
+  </div>
+
+
+  </div>
+
+
+

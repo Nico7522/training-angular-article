@@ -11,38 +11,45 @@ import { environment } from 'src/environment/environment';
   styleUrls: ['./categorie-selected.component.css'],
 })
 export class CategorieSelectedComponent implements OnInit, OnDestroy {
-  filteredProduct: Product[] = []
-  imgUrl = environment.apiUrlImg
+  filteredProduct: Product[] = [];
+  imgUrl = environment.apiUrlImg;
+  save: Product[] = this.filteredProduct;
 
-  filteredProductSub!: Subscription
+  filteredProductSub!: Subscription;
   constructor(
     private _productService: ProductService,
     private route: ActivatedRoute
   ) {
-    
+    this.filteredProductSub = this._productService.$search.subscribe(
+      (value: string) => {
+        if (value === '') {
+          this.filteredProduct = this.save;
+        } else {
+          this.filteredProduct = this.filteredProduct.filter((p) => {
+            return p.title.includes(value);
+          });
+        }
+      }
+    );
   }
 
   ngOnInit(): void {
-
-    // TODO faire une requête api pour trier directement par filtre 
     const categorieSelected = this.route.snapshot.params['categorie'];
     if (categorieSelected) {
-      console.log(categorieSelected);
-      
       this.route.params.subscribe((params) => {
-        this.filteredProductSub = this._productService.getProductByCategorie(params['categorie']).subscribe({
-          next: (val) => {
-            this.filteredProduct = val.filter((p) => {
-              return p.categorie === params['categorie'];
-            });
-            
-          },
-        });
+        this.filteredProductSub = this._productService
+          .getProductByCategorie(params['categorie'])
+          .subscribe({
+            next: (val) => {
+              this.filteredProduct = val;
+              this.save = val;
+            },
+          });
       });
     }
   }
 
   ngOnDestroy(): void {
-      this.filteredProductSub.unsubscribe()
+    this.filteredProductSub.unsubscribe();
   }
 }

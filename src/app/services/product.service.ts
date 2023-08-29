@@ -9,11 +9,11 @@ import { Product } from '../shared/models/product';
 })
 export class ProductService {
   products: Product[] = [];
-  private _search: String = '';
-  private _$search: BehaviorSubject<String> = new BehaviorSubject<String>(
+  private _search: string = '';
+  private _$search: BehaviorSubject<string> = new BehaviorSubject<string>(
     this._search
   );
-  $search: Observable<String> = this._$search.asObservable();
+  $search: Observable<string> = this._$search.asObservable();
   private filteredProduct: BehaviorSubject<Product[]> = new BehaviorSubject<
     Product[]
   >([]);
@@ -47,9 +47,13 @@ export class ProductService {
   }
 
   onSearch(value: string) {
+    this._$search.next(value)
     const filter = this.products.filter((product) => {
-      return product.title.includes(value);
+      return product.title.toLowerCase().replaceAll('é', "e").includes(value.toLowerCase().replaceAll('é', "e"));
     });
     this.filteredProduct.next(filter);
   }
+
+  
+
 }

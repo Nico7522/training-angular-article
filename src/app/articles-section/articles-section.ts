@@ -14,9 +14,9 @@ import { Product } from '../shared/models/product';
 export class ArticlesSectionComponent {
 pain: any;
 
-  constructor(private articleList: DataService, private productService: ProductService) {
-    this.articleList.$filteredProduct.subscribe((val: Article[] ) => {
-      this.articles = val
+  constructor(private articleList: DataService, private _productService: ProductService) {
+    this._productService.$filteredProduct.subscribe((products: Product[] ) => {
+      this.products = products
     })
   }
   articles: Article[] = []
@@ -28,7 +28,7 @@ pain: any;
   }
   ngOnInit(): void {
     this.articles = this.articleList.articleList
-    this.productService.getProducts().subscribe({
+    this._productService.getProducts().subscribe({
 
       next: (products) => {this.products = products;
          console.log(products)

@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit, OnDestroy, isDirty {
   }
 
   isDirty(): boolean {
-    return this.loginForm.dirty;
+    return this.loginForm.dirty && !this.loginForm.valid
   }
 }
 

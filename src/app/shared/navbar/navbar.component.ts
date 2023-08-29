@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/services/auth.service';
 
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,14 +17,14 @@ export class NavbarComponent implements OnInit {
   filteredProduct!: Article[];
   user!: string | null;
   constructor(
-    private productService: DataService,
+    private _productService: ProductService,
     private _authService: AuthService,
     private _cookieService: CookieService,
     private _router: Router
   ) {}
 
   getValue() {
-    this.productService.onSearch(this.value);
+    this._productService.onSearch(this.value);
   }
 
   logout(): void {

@@ -67,20 +67,26 @@ export class AuthService {
           localStorage.clear();
           sessionStorage.clear();
           console.log(res);
-          
+
           return res;
         })
       );
   }
 
-  register(user: UserLogin): Observable<UserResponse> {
-    return this._httpClient
-      .post<UserResponse>(`${environment.apiUrl}/register`, user)
+  register(user: any): Observable<any> {
+    console.log('user', user);
+    
+    return this._httpClient.post<any>(`${environment.apiUrl}/register`, user, {
+      withCredentials: true})
       .pipe(
         map((res) => {
+          console.log(res);
+          
+          localStorage.setItem('name', res.user.name);
+          this._userName.next(res.user.name);
+
           this._tokenService.saveToken(res.token.token);
           this._currentUserSubject.next({ ...res.user });
-          this.setInfoCookie(res.user);
           return res;
         })
       );
