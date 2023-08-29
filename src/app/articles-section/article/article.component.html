@@ -1,20 +1,30 @@
- <div class="productInfo">
-  <img [src]="img"  [alt]="alt" />
-  <div  class="card-body">
+<div class="productInfo">
+  <img [src]="img" [alt]="alt" />
+
+  <div class="card-body">
     <div class="product">
-    <app-title [title]="title"  />
-    <app-price [price]="price" />
-      <h3>{{description}}</h3>
-
+      <div class="title-price">
+        <app-title [title]="title" />
+        <app-price [price]="price" />
+      </div>
+      <div class="desc">
+        <h3>{{ description }}</h3>
+      </div>
     </div>
+
     <div class="row-display">
-      <app-modal-details [idArticle]="id" [descriptionArticle]="description"/>
+      <app-modal-details [idArticle]="id" [descriptionArticle]="description" />
       <!-- <a routerLink="/article/{{ id }}">Détails</a> -->
-        <app-like [liked]="like" [disliked]="disliked" [title]="title" [id]="id" [isLiked]="isLiked" [isDisliked]="isDisliked" />
+      <app-like
+        [liked]="like"
+        [disliked]="disliked"
+        [title]="title"
+        [id]="id"
+        [isLiked]="isLiked"
+        [isDisliked]="isDisliked"
+      />
     </div>
-    
-    <app-comment [comment]="comment"/>
+
+    <app-comment [comment]="comment" />
   </div>
-</div> 
-
-
+</div>

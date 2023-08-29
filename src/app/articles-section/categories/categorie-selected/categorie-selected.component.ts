@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/shared/models/product';
+import { environment } from 'src/environment/environment';
 
 @Component({
   selector: 'app-categorie-selected',
@@ -11,6 +12,7 @@ import { Product } from 'src/app/shared/models/product';
 })
 export class CategorieSelectedComponent implements OnInit, OnDestroy {
   filteredProduct: Product[] = []
+  imgUrl = environment.apiUrlImg
 
   filteredProductSub!: Subscription
   constructor(

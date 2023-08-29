@@ -10,8 +10,12 @@
     text-align: center;
 }
 
+.title-price {
+    height: 90px;
+}
+
 .desc {
-    width: 750px;
+   height: 200px;
     
 }
 h3 {

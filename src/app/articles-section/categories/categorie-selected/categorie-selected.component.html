@@ -1,10 +1,19 @@
-<div class="container">
-  <div class="card articleInfo" *ngFor="let product of filteredProduct">
-    <img [src]="product.img" class="card-img-top" />
+<div class="categorie">
+  <div class="productInfo" *ngFor="let product of filteredProduct">
+    <img [src]="imgUrl + product.img"  />
     <div class="card-body">
-      <app-title [title]="product.title" />
-      <app-price [price]="product.price" />
-      <h3>{{ product.description }}</h3>
+      <div class="product">
+        <div class="title-price">
+  
+          <app-title [title]="product.title" />
+          <app-price [price]="product.price" />
+  
+        </div>
+        <div class="desc">
+          <h3>{{ product.description }}</h3>
+        </div>
+        
+      </div>
       <div class="row-display">
         <app-modal-details
           [idArticle]="product.id"
