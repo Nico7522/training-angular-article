@@ -1,14 +1,29 @@
-.articleInfo {
+.productInfo {
     width: 18rem;
+    border: solid 1px black;
+    height: 700px;
    
+   
+}
+
+.product {
+    text-align: center;
+}
+
+.desc {
+    width: 750px;
+    
 }
 h3 {
     font-size: 1.3rem;
+   
 }
 
 img {
-    /* width: 286px; */
-    height: 200px;
+    width: 286px;
+    height: 250px ;
+    
+    
     margin: auto;
 }
 .row-display {
@@ -16,5 +31,10 @@ img {
     margin-bottom: 2px;
 }
 .row-display > a {
+    
     margin-top: 2px ;
+}
+
+p {
+
 }

@@ -35,6 +35,10 @@ export class ProductService {
       }))
   }
 
+  getProductByCategorie(categorie: string): Observable<Product[]> {
+    return this._httpClient.get<Product[]>(`${environment.apiUrl}/product/categorie/${categorie}`)
+  }
+
   getById(id: number): Product | undefined {
     const actualProduct = this.products.find(a => { return a.id === id})
     this._$product.next(actualProduct)

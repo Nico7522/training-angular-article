@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { BehaviorSubject, Subscription } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
 import { Product } from 'src/app/shared/models/product';
 
@@ -8,8 +9,10 @@ import { Product } from 'src/app/shared/models/product';
   templateUrl: './categorie-selected.component.html',
   styleUrls: ['./categorie-selected.component.css'],
 })
-export class CategorieSelectedComponent implements OnInit {
-  filteredProduct: Product[] = [];
+export class CategorieSelectedComponent implements OnInit, OnDestroy {
+  filteredProduct: Product[] = []
+
+  filteredProductSub!: Subscription
   constructor(
     private _productService: ProductService,
     private route: ActivatedRoute
@@ -22,17 +25,22 @@ export class CategorieSelectedComponent implements OnInit {
     // TODO faire une requête api pour trier directement par filtre 
     const categorieSelected = this.route.snapshot.params['categorie'];
     if (categorieSelected) {
+      console.log(categorieSelected);
+      
       this.route.params.subscribe((params) => {
-        this._productService.getProducts().subscribe({
+        this.filteredProductSub = this._productService.getProductByCategorie(params['categorie']).subscribe({
           next: (val) => {
-            console.log('dd');
-
             this.filteredProduct = val.filter((p) => {
               return p.categorie === params['categorie'];
             });
+            
           },
         });
       });
     }
+  }
+
+  ngOnDestroy(): void {
+      this.filteredProductSub.unsubscribe()
   }
 }
