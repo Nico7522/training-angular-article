@@ -1,68 +1,14 @@
-<!-- <div class="categorie">
-  <div class="productInfo" *ngFor="let product of filteredProduct">
-    <img [src]="imgUrl + product.img"  />
-    <div class="card-body">
-      <div class="product">
-        <div class="title-price">
-  
-          <app-title [title]="product.title" />
-          <app-price [price]="product.price" />
-  
-        </div>
-        <div class="desc">
-          <h3>{{ product.description }}</h3>
-        </div>
-        
-      </div>
-      <div class="row-display">
-        <app-modal-details
-          [idArticle]="product.id"
-          [descriptionArticle]="product.description"
-        />
-
-        <app-like
-          [liked]="product.like"
-          [disliked]="product.dislike"
-          [title]="product.title"
-          [id]="product.id"
-          [liked]="product.like"
-        />
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<div  class="container">
- 
-  <!-- <div testDirective id="home">
-    <app-article  *ngFor="let article of articles"
-    [id]="article.id"
-    [titleArticle]="article.titleArticle"
-    [priceArticle]="article.priceArticle"
-    [description]="article.description"
-    [availabe]="article.available"
-    [liked]="article.numberOfLike"
-    [disliked]="article.numberOfDislike"
-    [isLiked]="article.isLiked"
-    [isDisliked]="article.isDisliked"
-    [img]="article.urlImg"
-    [alt]="article.textAltImg"
-   
-    />
-  </div> -->
+<div class="container">
   <div testDirective class="home">
-    <app-article *ngFor="let product of filteredProduct"
-    [id]="product.id"
-    [title]="product.title"
-    [price]="product.price"
-    [description]="product.description"
-    [img]="'http://localhost:8080/'+ product.img"
-    [like]="product.like"
+    <app-article
+      *ngFor="let product of filteredProduct"
+      [id]="product.id"
+      [title]="product.title"
+      [price]="product.price"
+      [description]="product.description"
+      [img]="'http://localhost:8080/' + product.img"
+      [like]="product.like"
+      (likeProduct)="like($event)"
     />
   </div>
-
-
-  </div>
-
-
-
+</div>

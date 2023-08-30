@@ -48,6 +48,20 @@ export class CategorieSelectedComponent implements OnInit, OnDestroy {
       });
     }
   }
+  
+  like(id: number) {
+    this._productService.like(id).subscribe({
+      next: (res) => {
+        this.filteredProduct.find((p) => {
+          if (p.id === id) {
+            {
+              p.like = res.product.like;
+            }
+          }
+        });
+      },
+    });
+  }
 
   ngOnDestroy(): void {
     this.filteredProductSub.unsubscribe();

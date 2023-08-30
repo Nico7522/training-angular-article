@@ -6,12 +6,12 @@ import { CategoriesComponent } from './categories/categories.component';
 import { CategorieSelectedComponent } from './categories/categorie-selected/categorie-selected.component';
 
 const routes: Routes = [
-  {path: '', component: ArticlesSectionComponent},
+  // {path: '', component: ArticlesSectionComponent},
+  {path: "article/:id", component: DetailsComponent},
   {path: "article/categories", component: CategoriesComponent, children: [
     {path: "", component: CategorieSelectedComponent},
     {path: ":categorie", component: CategorieSelectedComponent},
   ]},
-  {path: "article/:id", component: DetailsComponent},
 ];
 
 @NgModule({

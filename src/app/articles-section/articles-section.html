@@ -1,33 +1,5 @@
-<div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Catégories
-  </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" routerLink="/article/categories/pizza">Pizza</a>
-    <a class="dropdown-item" routerLink="/article/categories/dessert">Dessert</a>
-    <a class="dropdown-item" routerLink="/article/categories/boisson">Boisson</a>
-    <a class="dropdown-item" routerLink="/article/categories/autre">Autre</a>
-  </div>
-</div>
-
+<app-categories></app-categories>
 <div  class="container">
- 
-    <!-- <div testDirective id="home">
-      <app-article  *ngFor="let article of articles"
-      [id]="article.id"
-      [titleArticle]="article.titleArticle"
-      [priceArticle]="article.priceArticle"
-      [description]="article.description"
-      [availabe]="article.available"
-      [liked]="article.numberOfLike"
-      [disliked]="article.numberOfDislike"
-      [isLiked]="article.isLiked"
-      [isDisliked]="article.isDisliked"
-      [img]="article.urlImg"
-      [alt]="article.textAltImg"
-     
-      />
-    </div> -->
     <div testDirective class="home">
       <app-article *ngFor="let product of products"
       [id]="product.id"
