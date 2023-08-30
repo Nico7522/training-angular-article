@@ -52,7 +52,7 @@ export class ArticlesSectionComponent {
     this._productService.dislike(id).subscribe({
       next: (res) => {
         console.log(res)
-        checkIsLikedOrDisliked(this.products, "dislike", res, "Not Modified")
+        checkIsLikedOrDisliked(this.products, "dislike", res, "Already disliked")
       },
     })
   }
