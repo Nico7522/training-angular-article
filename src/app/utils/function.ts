@@ -1,4 +1,6 @@
 import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn } from "@angular/forms";
+import { Product } from "../shared/models/product";
+import { LikeOrDislikeResponse } from "../shared/interfaces/response.interface";
 
 export function hasErrorAndTouched(
     form: FormGroup,
@@ -26,7 +28,7 @@ export function checkAge(): ValidatorFn {
         if (actualMonth === userMonthBirthdate) {
           
           if (userDayBirthdate > actualDay) {
-            console.log('dd');
+           
             return { notMajor: true };
           }
         }
@@ -39,3 +41,21 @@ export function checkAge(): ValidatorFn {
       return null
     };
   }
+
+export function checkIsLikedOrDisliked(actualArray: Product[], attribut: keyof Product, response: LikeOrDislikeResponse, message: string): Product[] | null {
+  console.log(response);
+  
+  if (response.message === message) {
+    return null
+  } else {
+   return actualArray.filter(p => {
+    if (p.id === response.product.id) {
+      if (attribut === "like" || attribut === "dislike") {
+        p[attribut] = response.product[attribut];
+      }
+    }
+    })
+
+  }
+
+}

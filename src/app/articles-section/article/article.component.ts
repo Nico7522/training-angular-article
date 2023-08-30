@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { LikeOrDislike } from 'src/app/shared/interfaces/like-dislike.interface';
 import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
@@ -15,11 +16,11 @@ export class ArticleComponent {
 @Input() id: number = 0
 @Input() like!: number;
 @Input() disliked: number = 0
-
+@Input() dislike!: number
 @Input() img!: string;
 
 @Input() errorMessage!: string
-@Output() likeProduct = new EventEmitter<number>()
+@Output() likeOrDislike= new EventEmitter<LikeOrDislike>()
 totalNumberLike: number = 0;
 comment: string = '';
 message: string = '';
@@ -27,10 +28,10 @@ message: string = '';
 //   this.likeProduct.emit(this.id)
 // }
 
-getIdForLike(id: number){
+getId(action: LikeOrDislike){
 
   
-  this.likeProduct.emit(id)
+  this.likeOrDislike.emit(action)
 }
 
 

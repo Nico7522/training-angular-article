@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { ProductService } from 'src/app/services/product.service';
+import { LikeOrDislike } from 'src/app/shared/interfaces/like-dislike.interface';
 import { Product } from 'src/app/shared/models/product';
 import { environment } from 'src/environment/environment';
 
@@ -49,11 +50,11 @@ export class CategorieSelectedComponent implements OnInit, OnDestroy {
     }
   }
   
-  like(id: number) {
-    this._productService.like(id).subscribe({
+  like(action: LikeOrDislike) {
+    this._productService.like(action.id).subscribe({
       next: (res) => {
         this.filteredProduct.find((p) => {
-          if (p.id === id) {
+          if (p.id === action.id) {
             {
               p.like = res.product.like;
             }

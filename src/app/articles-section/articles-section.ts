@@ -3,6 +3,8 @@ import { DataService } from '../shared/services/data.service';
 import { Article } from '../shared/models/article';
 import { ProductService } from '../services/product.service';
 import { Product } from '../shared/models/product';
+import { LikeOrDislike } from '../shared/interfaces/like-dislike.interface';
+import { checkIsLikedOrDisliked } from '../utils/function';
 
 @Component({
   selector: 'app-articles-section, TestDirective',
@@ -10,12 +12,9 @@ import { Product } from '../shared/models/product';
   styleUrls: ['./articles-section.css'],
 })
 export class ArticlesSectionComponent {
-  errorMessage: string =''
+  errorMessage: string = '';
 
-  constructor(
- 
-    private _productService: ProductService
-  ) {
+  constructor(private _productService: ProductService) {
     this._productService.$filteredProduct.subscribe((products: Product[]) => {
       this.products = products;
     });
@@ -31,34 +30,30 @@ export class ArticlesSectionComponent {
     });
   }
 
+  likeOrDislike(action: LikeOrDislike) {
+    if (action.action === 'like') {
+      this.like(action.id);
+    } else if (action.action === 'dislike') {
+      this.dislike(action.id)
+    }
+  }
+
   like(id: number) {
     this._productService.like(id).subscribe({
       next: (res) => {
         console.log(res);
         
-        if (res.message === "Already liked") {
-          return null
-        } else {
-        return this.products.find((p) => {
-            if (p.id === id) {
-              {
-                p.like = res.product.like;
-              }
-            }
-            
-          });
-
-        }
-        
+        checkIsLikedOrDisliked(this.products, "like", res, "Already liked")
       },
-      error: (err) => {
-        console.log(err);
-        if (err.statusText === "Not Modified") {
-          this.errorMessage = 'Vous avez déjà aimé le produit'
-          
-          
-        }
-      }
     });
+  }
+
+  dislike(id: number) {
+    this._productService.dislike(id).subscribe({
+      next: (res) => {
+        console.log(res)
+        checkIsLikedOrDisliked(this.products, "dislike", res, "Not Modified")
+      },
+    })
   }
 }

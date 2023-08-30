@@ -16,12 +16,12 @@
       <app-modal-details [idArticle]="id" [descriptionArticle]="description" />
       <!-- <a routerLink="/article/{{ id }}">Détails</a> -->
       <app-like
-        [liked]="like"
-       
+        [like]="like"
+        [dislike]="dislike"
         [title]="title"
         [id]="id"
      
-        (likeProduct)="getIdForLike(id)"
+        (likeOrDislike)="getId($event)"
       />
     </div>
 

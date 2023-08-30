@@ -1,6 +1,6 @@
 <div class="like">
-    <button  (click)="sendId()" class="btn btn-success btn-sm" [ngClass]="{'liked': isLiked }"><img src="../../../../assets/like.png" width="25px" alt=""><span>{{liked}}</span></button>
-    <button   class="btn btn-danger btn-sm" [ngClass]="{'disliked': isDisliked }"><img src="../../../../assets/dislike.png" width="25px" alt=""></button>
+    <button  (click)="sendId('like')" class="btn btn-success btn-sm" [ngClass]="{'liked': isLiked }"><img src="../../../../assets/like.png" width="25px" alt=""><span>{{like}}</span></button>
+    <button (click)="sendId('dislike')"   class="btn btn-danger btn-sm" [ngClass]="{'disliked': isDisliked }"><img src="../../../../assets/dislike.png" width="25px" alt=""><span>{{dislike}}</span></button>
 
 
 </div>

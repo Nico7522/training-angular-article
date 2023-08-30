@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-import { DataService } from 'src/app/shared/services/data.service';
+import { LikeOrDislike } from 'src/app/shared/interfaces/like-dislike.interface';
 
 @Component({
   selector: 'app-like',
@@ -13,9 +13,9 @@ export class LikeComponent implements OnInit {
     
   }
   isLiked: boolean = false
-  @Input() liked!: number;
-
-  @Input() isDisliked!: boolean
+  isDisliked: boolean = false
+  @Input() like!: number;
+  @Input() dislike!: number
   @Input() title: string = '';
   @Input() id!: number;
 
@@ -29,13 +29,28 @@ export class LikeComponent implements OnInit {
         
       }
     })
+
+    this._productService.isDisliked(this.id).subscribe({
+      next: (res) => {
+        if (res === true) {
+          this.isDisliked = true
+        }
+        
+      }
+    })
   }
 
-  @Output() likeProduct = new EventEmitter<number>()
-  sendId() {
-   this.isLiked = true
+
+  @Output() likeOrDislike = new EventEmitter<LikeOrDislike>()
+  sendId(action: string) {
+    if (action === "like") {
+      this.isLiked = true
+    }
+    if (action === "dislike") {
+      this.isDisliked = true
+    }
     
-    this.likeProduct.emit(this.id)
+    this.likeOrDislike.emit({id: this.id, action: action})
   }
 
   // dislike(id: number) {

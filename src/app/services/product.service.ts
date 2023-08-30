@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { environment } from 'src/environment/environment';
 import { Product } from '../shared/models/product';
+import { LikeOrDislikeResponse } from '../shared/interfaces/response.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -64,10 +65,26 @@ export class ProductService {
     this.filteredProduct.next(filter);
   }
 
-  like(id: number): Observable<any> {
+  like(id: number): Observable<LikeOrDislikeResponse> {
+    console.log(id);
+    
     return this._httpClient
-      .put<any>(
+      .put<LikeOrDislikeResponse>(
         `${environment.apiUrl}/product/like`,
+        { id },
+        { withCredentials: true }
+      )
+      .pipe((res) => {
+        return res;
+      });
+  }
+
+  dislike(id: number): Observable<LikeOrDislikeResponse> {
+    console.log(id);
+    
+    return this._httpClient
+      .put<LikeOrDislikeResponse>(
+        `${environment.apiUrl}/product/dislike`,
         { id },
         { withCredentials: true }
       )
@@ -79,6 +96,15 @@ export class ProductService {
   isLiked(id: number): Observable<boolean> {
     return this._httpClient
       .get<boolean>(`${environment.apiUrl}/product/isliked/${id}`, { withCredentials: true})
+      .pipe((res) => {
+        
+        return res;
+      });
+  }
+
+  isDisliked(id: number): Observable<boolean> {
+    return this._httpClient
+      .get<boolean>(`${environment.apiUrl}/product/isdisliked/${id}`, { withCredentials: true})
       .pipe((res) => {
         
         return res;
