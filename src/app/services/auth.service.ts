@@ -75,7 +75,6 @@ export class AuthService {
 
   register(user: any): Observable<any> {
     console.log('user', user);
-    
     return this._httpClient.post<any>(`${environment.apiUrl}/register`, user, {
       withCredentials: true})
       .pipe(
