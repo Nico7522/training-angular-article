@@ -19,46 +19,69 @@ export class ProductService {
   >([]);
   $filteredProduct: Observable<Product[]> = this.filteredProduct.asObservable();
 
-
   private _product!: Product | undefined;
-  private _$product: BehaviorSubject<Product | undefined> = new BehaviorSubject<Product | undefined>(this._product);
+  private _$product: BehaviorSubject<Product | undefined> = new BehaviorSubject<
+    Product | undefined
+  >(this._product);
   $product: Observable<Product | undefined> = this._$product.asObservable();
-
 
   constructor(private _httpClient: HttpClient) {}
 
   getProducts(): Observable<Product[]> {
     return this._httpClient
-      .get<Product[]>(`${environment.apiUrl}/product`).pipe(map((product) => {
-        this.products = product
-        return product
-      }))
+      .get<Product[]>(`${environment.apiUrl}/product`)
+      .pipe(
+        map((product) => {
+          this.products = product;
+          return product;
+        })
+      );
   }
 
   getProductByCategorie(categorie: string): Observable<Product[]> {
-    return this._httpClient.get<Product[]>(`${environment.apiUrl}/product/categorie/${categorie}`)
+    return this._httpClient.get<Product[]>(
+      `${environment.apiUrl}/product/categorie/${categorie}`
+    );
   }
 
   getById(id: number): Product | undefined {
-    const actualProduct = this.products.find(a => { return a.id === id})
-    this._$product.next(actualProduct)
-    
+    const actualProduct = this.products.find((a) => {
+      return a.id === id;
+    });
+    this._$product.next(actualProduct);
+
     return this.products.find((a: Product) => a.id === id);
   }
 
   onSearch(value: string) {
-    this._$search.next(value)
+    this._$search.next(value);
     const filter = this.products.filter((product) => {
-      return product.title.toLowerCase().replaceAll('é', "e").includes(value.toLowerCase().replaceAll('é', "e"));
+      return product.title
+        .toLowerCase()
+        .replaceAll('é', 'e')
+        .includes(value.toLowerCase().replaceAll('é', 'e'));
     });
     this.filteredProduct.next(filter);
   }
 
   like(id: number): Observable<any> {
-   return this._httpClient.put<any>(`${environment.apiUrl}/product/like`, {id}).pipe(res => {return res}
-   )
+    return this._httpClient
+      .put<any>(
+        `${environment.apiUrl}/product/like`,
+        { id },
+        { withCredentials: true }
+      )
+      .pipe((res) => {
+        return res;
+      });
   }
 
-  
-
+  isLiked(id: number): Observable<boolean> {
+    return this._httpClient
+      .get<boolean>(`${environment.apiUrl}/product/isliked/${id}`, { withCredentials: true})
+      .pipe((res) => {
+        
+        return res;
+      });
+  }
 }

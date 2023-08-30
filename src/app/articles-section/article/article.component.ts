@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
@@ -15,10 +15,10 @@ export class ArticleComponent {
 @Input() id: number = 0
 @Input() like!: number;
 @Input() disliked: number = 0
-@Input() isLiked!: boolean;
-@Input() isDisliked!: boolean;
+
 @Input() img!: string;
-@Input() alt!: string;
+
+@Input() errorMessage!: string
 @Output() likeProduct = new EventEmitter<number>()
 totalNumberLike: number = 0;
 comment: string = '';
@@ -32,6 +32,7 @@ getIdForLike(id: number){
   
   this.likeProduct.emit(id)
 }
+
 
 
 

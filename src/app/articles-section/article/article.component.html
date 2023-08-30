@@ -1,5 +1,5 @@
 <div class="productInfo">
-  <img [src]="img" [alt]="alt" />
+  <img [src]="img" />
 
   <div class="card-body">
     <div class="product">
@@ -17,11 +17,10 @@
       <!-- <a routerLink="/article/{{ id }}">Détails</a> -->
       <app-like
         [liked]="like"
-        [disliked]="disliked"
+       
         [title]="title"
         [id]="id"
-        [isLiked]="isLiked"
-        [isDisliked]="isDisliked"
+     
         (likeProduct)="getIdForLike(id)"
       />
     </div>

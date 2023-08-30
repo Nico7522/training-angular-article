@@ -10,10 +10,10 @@ import { Product } from '../shared/models/product';
   styleUrls: ['./articles-section.css'],
 })
 export class ArticlesSectionComponent {
-  pain: any;
+  errorMessage: string =''
 
   constructor(
-    private articleList: DataService,
+ 
     private _productService: ProductService
   ) {
     this._productService.$filteredProduct.subscribe((products: Product[]) => {
@@ -34,14 +34,31 @@ export class ArticlesSectionComponent {
   like(id: number) {
     this._productService.like(id).subscribe({
       next: (res) => {
-        this.products.find((p) => {
-          if (p.id === id) {
-            {
-              p.like = res.product.like;
+        console.log(res);
+        
+        if (res.message === "Already liked") {
+          return null
+        } else {
+        return this.products.find((p) => {
+            if (p.id === id) {
+              {
+                p.like = res.product.like;
+              }
             }
-          }
-        });
+            
+          });
+
+        }
+        
       },
+      error: (err) => {
+        console.log(err);
+        if (err.statusText === "Not Modified") {
+          this.errorMessage = 'Vous avez déjà aimé le produit'
+          
+          
+        }
+      }
     });
   }
 }
