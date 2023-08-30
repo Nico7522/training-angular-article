@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DataService } from 'src/app/shared/services/data.service';
 
 @Component({
@@ -23,8 +23,11 @@ export class LikeComponent implements OnInit {
  
   }
 
-  like(id: number) {
-    this.articleList.onLike(id);
+  @Output() likeProduct = new EventEmitter<number>()
+  sendId() {
+   
+    
+    this.likeProduct.emit(this.id)
   }
 
   dislike(id: number) {

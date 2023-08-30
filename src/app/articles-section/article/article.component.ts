@@ -19,15 +19,21 @@ export class ArticleComponent {
 @Input() isDisliked!: boolean;
 @Input() img!: string;
 @Input() alt!: string;
-@Output() isLikedMessage = new EventEmitter<string>()
+@Output() likeProduct = new EventEmitter<number>()
 totalNumberLike: number = 0;
 comment: string = '';
 message: string = '';
-getIsLiked(val: string) {
-  this.message = "Vous avez aimé l'article " + val
-  this.isLikedMessage.emit(this.message)
-  return
+// sendId(id: number) {
+//   this.likeProduct.emit(this.id)
+// }
+
+getIdForLike(id: number){
+
+  
+  this.likeProduct.emit(id)
 }
+
+
 
 textAltImg: string = "alternative title";
 urlImg: string = "https://via.placeholder.com/400x250";

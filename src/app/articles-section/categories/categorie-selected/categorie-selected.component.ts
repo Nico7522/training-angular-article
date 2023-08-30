@@ -26,7 +26,7 @@ export class CategorieSelectedComponent implements OnInit, OnDestroy {
           this.filteredProduct = this.save;
         } else {
           this.filteredProduct = this.filteredProduct.filter((p) => {
-            return p.title.includes(value);
+            return p.title.toLowerCase().replaceAll('é', 'e').includes(value.toLowerCase().replaceAll('é', 'e'));
           });
         }
       }

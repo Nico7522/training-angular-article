@@ -54,6 +54,11 @@ export class ProductService {
     this.filteredProduct.next(filter);
   }
 
+  like(id: number): Observable<any> {
+   return this._httpClient.put<any>(`${environment.apiUrl}/product/like`, {id}).pipe(res => {return res}
+   )
+  }
+
   
 
 }
