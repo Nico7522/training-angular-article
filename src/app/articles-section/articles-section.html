@@ -3,10 +3,11 @@
     Catégories
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" routerLink="/article/categories/pizza">Pizza</a>
-    <a class="dropdown-item" routerLink="/article/categories/dessert">Dessert</a>
-    <a class="dropdown-item" routerLink="/article/categories/boisson">Boisson</a>
-    <a class="dropdown-item" routerLink="/article/categories/autre">Autre</a>
+    <a class="dropdown-item" (click)="getByCategorie('all')">Voir tout </a>
+    <a class="dropdown-item" (click)="getByCategorie('pizza')">Pizza</a>
+    <a class="dropdown-item" (click)="getByCategorie('dessert')">Dessert</a>
+    <a class="dropdown-item" (click)="getByCategorie('boisson')">Boisson</a>
+    <a class="dropdown-item" (click)="getByCategorie('autre')">Autre</a>
   </div>
 </div>
 
