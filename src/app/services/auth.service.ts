@@ -10,8 +10,8 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AuthService {
   // toutes les données de l'utilisateur
-  private _currentUserSubject: BehaviorSubject<User | null> =
-    new BehaviorSubject<User | null>(null);
+  private _currentUserSubject: BehaviorSubject<UserResponse | null> =
+    new BehaviorSubject<UserResponse | null>(null);
   $currentUser = this._currentUserSubject.asObservable();
 
   // Username pour set le cookie
@@ -22,9 +22,13 @@ export class AuthService {
   >(this.username);
   $userName = this._userName.asObservable();
 
-  public get currentUserValue(): User | null {
+  public get currentUserValue(): UserResponse | null {
     return this._currentUserSubject.value;
   }
+
+  relogMessage: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  $relogMessage = this.relogMessage.asObservable();
+
   constructor(
     private _httpClient: HttpClient,
     private _tokenService: TokenService,
@@ -34,7 +38,7 @@ export class AuthService {
     this._currentUserSubject.subscribe({
       next: (user) => {
         if (user) {
-          user.token = token;
+          user.token.token = token;
         }
       },
     });
@@ -51,7 +55,8 @@ export class AuthService {
           this._userName.next(res.user.name);
 
           this._tokenService.saveToken(res.token.token);
-          this._currentUserSubject.next({ ...res.user });
+          this._currentUserSubject.next(res);
+          this.$currentUser.subscribe((u) => console.log('currentUser =>', u));
 
           return res;
         })
@@ -73,19 +78,20 @@ export class AuthService {
       );
   }
 
-  register(user: any): Observable<any> {
-    console.log('user', user);
-    return this._httpClient.post<any>(`${environment.apiUrl}/register`, user, {
-      withCredentials: true})
+  register(user: any): Observable<UserResponse> {
+ 
+    return this._httpClient
+      .post<UserResponse>(`${environment.apiUrl}/register`, user, {
+        withCredentials: true,
+      })
       .pipe(
         map((res) => {
-          console.log(res);
-          
           localStorage.setItem('name', res.user.name);
           this._userName.next(res.user.name);
 
           this._tokenService.saveToken(res.token.token);
-          this._currentUserSubject.next({ ...res.user });
+          this._currentUserSubject.next(res);
+
           return res;
         })
       );

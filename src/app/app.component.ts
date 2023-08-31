@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { DataService } from './shared/services/data.service';
-import { Article } from './shared/models/article';
+import { Component } from '@angular/core';
+
 
 
 @Component({
@@ -9,5 +8,9 @@ import { Article } from './shared/models/article';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
- 
+constructor(){
+  if (!sessionStorage.getItem('token')) {
+    localStorage.clear()
+  }
+}
 }

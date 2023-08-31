@@ -5,6 +5,8 @@ import { ProductService } from '../services/product.service';
 import { Product } from '../shared/models/product';
 import { LikeOrDislike } from '../shared/interfaces/like-dislike.interface';
 import { checkIsLikedOrDisliked } from '../utils/function';
+import { LikeOrDislikeResponse } from '../shared/interfaces/response.interface';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-articles-section, TestDirective',
@@ -14,7 +16,7 @@ import { checkIsLikedOrDisliked } from '../utils/function';
 export class ArticlesSectionComponent {
   errorMessage: string = '';
 
-  constructor(private _productService: ProductService) {
+  constructor(private _productService: ProductService, private _cookieService: CookieService) {
     this._productService.$filteredProduct.subscribe((products: Product[]) => {
       this.products = products;
     });
@@ -41,9 +43,10 @@ export class ArticlesSectionComponent {
   like(id: number) {
     this._productService.like(id).subscribe({
       next: (res) => {
-        console.log(res);
+       
+        console.log(this._cookieService.get('id'));
         
-        checkIsLikedOrDisliked(this.products, "like", res, "Already liked")
+        checkIsLikedOrDisliked(this.products, "like", res as LikeOrDislikeResponse, "Already liked")
       },
     });
   }
@@ -51,8 +54,10 @@ export class ArticlesSectionComponent {
   dislike(id: number) {
     this._productService.dislike(id).subscribe({
       next: (res) => {
-        console.log(res)
-        checkIsLikedOrDisliked(this.products, "dislike", res, "Already disliked")
+        
+          checkIsLikedOrDisliked(this.products, "dislike", res as LikeOrDislikeResponse, "Already disliked")
+          
+        
       },
     })
   }

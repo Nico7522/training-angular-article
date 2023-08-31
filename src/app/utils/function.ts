@@ -1,6 +1,6 @@
 import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn } from "@angular/forms";
 import { Product } from "../shared/models/product";
-import { LikeOrDislikeResponse } from "../shared/interfaces/response.interface";
+import { ErrorResponse, LikeOrDislikeResponse, NotModifiedResponse } from "../shared/interfaces/response.interface";
 
 export function hasErrorAndTouched(
     form: FormGroup,
@@ -42,7 +42,7 @@ export function checkAge(): ValidatorFn {
     };
   }
 
-export function checkIsLikedOrDisliked(actualArray: Product[], attribut: keyof Product, response: LikeOrDislikeResponse, message: string): Product[] | null {
+export function checkIsLikedOrDisliked(actualArray: Product[], attribut: keyof Product, response: LikeOrDislikeResponse , message: string): Product[] | null {
   console.log(response);
   
   if (response.message === message) {

@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { environment } from 'src/environment/environment';
 import { Product } from '../shared/models/product';
-import { LikeOrDislikeResponse } from '../shared/interfaces/response.interface';
+import { ErrorResponse, LikeOrDislikeResponse, NotModifiedResponse } from '../shared/interfaces/response.interface';
+import { AuthService } from './auth.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +28,7 @@ export class ProductService {
   >(this._product);
   $product: Observable<Product | undefined> = this._$product.asObservable();
 
-  constructor(private _httpClient: HttpClient) {}
+  constructor(private _httpClient: HttpClient, private _authService: AuthService, private _cookieSerice: CookieService) {}
 
   getProducts(): Observable<Product[]> {
     return this._httpClient
@@ -65,11 +67,11 @@ export class ProductService {
     this.filteredProduct.next(filter);
   }
 
-  like(id: number): Observable<LikeOrDislikeResponse> {
-    console.log(id);
+  like(id: number): Observable<LikeOrDislikeResponse | NotModifiedResponse | ErrorResponse> {
+    console.log(this._cookieSerice.get('token'));
     
     return this._httpClient
-      .put<LikeOrDislikeResponse>(
+      .put<LikeOrDislikeResponse | NotModifiedResponse | ErrorResponse>(
         `${environment.apiUrl}/product/like`,
         { id },
         { withCredentials: true }
@@ -79,32 +81,33 @@ export class ProductService {
       });
   }
 
-  dislike(id: number): Observable<LikeOrDislikeResponse> {
+  dislike(id: number): Observable<LikeOrDislikeResponse | NotModifiedResponse | ErrorResponse> {
     console.log(id);
     
     return this._httpClient
-      .put<LikeOrDislikeResponse>(
+      .put<LikeOrDislikeResponse | NotModifiedResponse | ErrorResponse>(
         `${environment.apiUrl}/product/dislike`,
         { id },
         { withCredentials: true }
       )
+      .pipe(map((res) => {
+     
+        return res
+      }));
+  }
+
+  isLiked(id: number): Observable<boolean | null> {
+    return this._httpClient
+      .get<boolean | null>(`${environment.apiUrl}/product/isliked/${id}`, { withCredentials: true})
       .pipe((res) => {
+      
         return res;
       });
   }
 
-  isLiked(id: number): Observable<boolean> {
+  isDisliked(id: number): Observable<boolean | null> {
     return this._httpClient
-      .get<boolean>(`${environment.apiUrl}/product/isliked/${id}`, { withCredentials: true})
-      .pipe((res) => {
-        
-        return res;
-      });
-  }
-
-  isDisliked(id: number): Observable<boolean> {
-    return this._httpClient
-      .get<boolean>(`${environment.apiUrl}/product/isdisliked/${id}`, { withCredentials: true})
+      .get<boolean | null>(`${environment.apiUrl}/product/isdisliked/${id}`, { withCredentials: true})
       .pipe((res) => {
         
         return res;

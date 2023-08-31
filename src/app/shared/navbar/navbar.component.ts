@@ -21,7 +21,13 @@ export class NavbarComponent implements OnInit {
     private _authService: AuthService,
     private _cookieService: CookieService,
     private _router: Router
-  ) {}
+  ) {
+
+    const stillLoged = this._cookieService.get('token')
+    if (!stillLoged) {
+      localStorage.clear()
+    }
+  }
 
   getValue() {
     this._productService.onSearch(this.value);

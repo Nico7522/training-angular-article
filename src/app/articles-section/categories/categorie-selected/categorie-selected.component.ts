@@ -50,19 +50,19 @@ export class CategorieSelectedComponent implements OnInit, OnDestroy {
     }
   }
   
-  like(action: LikeOrDislike) {
-    this._productService.like(action.id).subscribe({
-      next: (res) => {
-        this.filteredProduct.find((p) => {
-          if (p.id === action.id) {
-            {
-              p.like = res.product.like;
-            }
-          }
-        });
-      },
-    });
-  }
+  // like(action: LikeOrDislike) {
+  //   this._productService.like(action.id).subscribe({
+  //     next: (res) => {
+  //       this.filteredProduct.find((p) => {
+  //         if (p.id === action.id) {
+  //           {
+  //             p.like = res.product.like;
+  //           }
+  //         }
+  //       });
+  //     },
+  //   });
+  // }
 
   ngOnDestroy(): void {
     this.filteredProductSub.unsubscribe();
