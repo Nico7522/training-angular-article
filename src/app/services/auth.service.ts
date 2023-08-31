@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
-import { User, UserLogin, UserResponse } from '../shared/models/user';
+import { User, UserLogin, UserRegister, UserResponse } from '../shared/models/user';
 import { HttpClient } from '@angular/common/http';
 import { TokenService } from './token.service';
 import { environment } from 'src/environment/environment';
 import { CookieService } from 'ngx-cookie-service';
+import { setUser } from '../utils/function';
+import { LogoutResponse } from '../shared/interfaces/response.interface';
 @Injectable({
   providedIn: 'root',
 })
@@ -22,8 +24,14 @@ export class AuthService {
   >(this.username);
   $userName = this._userName.asObservable();
 
-  public get currentUserValue(): UserResponse | null {
-    return this._currentUserSubject.value;
+  // public get currentUserValue(): UserResponse | null {
+  //   return this._currentUserSubject.value;
+  // }
+
+  private get _isLogged(): boolean  {
+    console.log(this._cookieService.get('token') !== '');
+    
+    return this._cookieService.get('token') !== ''
   }
 
   relogMessage: BehaviorSubject<string> = new BehaviorSubject<string>('');
@@ -51,34 +59,28 @@ export class AuthService {
       })
       .pipe(
         map((res) => {
-          localStorage.setItem('name', res.user.name);
-          this._userName.next(res.user.name);
-
-          this._tokenService.saveToken(res.token.token);
-          this._currentUserSubject.next(res);
-          this.$currentUser.subscribe((u) => console.log('currentUser =>', u));
-
-          return res;
+         return setUser(res, this._userName, this._currentUserSubject)
         })
       );
   }
 
-  logout(): Observable<any> {
+  logout(): Observable<LogoutResponse> {
     return this._httpClient
-      .get<any>(`${environment.apiUrl}/logout`, { withCredentials: true })
+      .get<LogoutResponse>(`${environment.apiUrl}/logout`, { withCredentials: true })
       .pipe(
         map((res) => {
           this._userName.next(null);
           localStorage.clear();
-          sessionStorage.clear();
-          console.log(res);
-
           return res;
         })
       );
   }
 
-  register(user: any): Observable<UserResponse> {
+  clearLocalStorage(){
+    this._userName.next(null)
+  }
+
+  register(user: UserRegister): Observable<UserResponse> {
  
     return this._httpClient
       .post<UserResponse>(`${environment.apiUrl}/register`, user, {
@@ -86,24 +88,12 @@ export class AuthService {
       })
       .pipe(
         map((res) => {
-          localStorage.setItem('name', res.user.name);
-          this._userName.next(res.user.name);
-
-          this._tokenService.saveToken(res.token.token);
-          this._currentUserSubject.next(res);
-
-          return res;
+          return setUser(res, this._userName, this._currentUserSubject)
         })
       );
   }
 
-  setInfoCookie(user: User): void {
-    this._cookieService.set('name', user.name);
-    let name = this._cookieService.get('name');
-    this._userName.next(name);
-  }
-
-  isConnected(): boolean {
-    return this.currentUserValue !== null;
+  isConnected(): boolean  {
+    return this._isLogged
   }
 }

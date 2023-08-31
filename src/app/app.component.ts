@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthService } from './services/auth.service';
 
 
 
@@ -8,9 +10,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-constructor(){
+constructor(private _authService: AuthService, private _cookieService: CookieService){
   if (!sessionStorage.getItem('token')) {
     localStorage.clear()
   }
+
 }
 }

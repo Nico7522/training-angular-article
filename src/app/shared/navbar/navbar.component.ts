@@ -23,10 +23,6 @@ export class NavbarComponent implements OnInit {
     private _router: Router
   ) {
 
-    const stillLoged = this._cookieService.get('token')
-    if (!stillLoged) {
-      localStorage.clear()
-    }
   }
 
   getValue() {
@@ -43,5 +39,8 @@ export class NavbarComponent implements OnInit {
     this._authService.$userName.subscribe((username) => {
       this.user = username;
     });
+
   }
+
+
 }

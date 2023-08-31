@@ -1,6 +1,8 @@
 import { AbstractControl, FormGroup, ValidationErrors, ValidatorFn } from "@angular/forms";
 import { Product } from "../shared/models/product";
 import { ErrorResponse, LikeOrDislikeResponse, NotModifiedResponse } from "../shared/interfaces/response.interface";
+import { Subject } from "rxjs";
+import { User, UserResponse } from "../shared/models/user";
 
 export function hasErrorAndTouched(
     form: FormGroup,
@@ -58,4 +60,11 @@ export function checkIsLikedOrDisliked(actualArray: Product[], attribut: keyof P
 
   }
 
+}
+
+export function setUser(response: UserResponse, userName: Subject<string | null>, fullUser: Subject<UserResponse | null> ): UserResponse{
+  localStorage.setItem('name', response.user.name);
+  userName.next(response.user.name);
+  fullUser.next(response);
+  return response;
 }

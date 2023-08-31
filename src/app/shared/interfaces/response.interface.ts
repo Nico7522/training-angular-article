@@ -13,3 +13,7 @@ export interface NotModifiedResponse {
 export interface ErrorResponse {
     message: string;
 }
+
+export interface LogoutResponse {
+    message: string
+}
