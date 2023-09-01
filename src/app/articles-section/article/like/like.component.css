@@ -1,14 +1,15 @@
 .liked {
     background-color: rgb(142, 212, 114);
-    opacity: 0.5;
+    border: solid 3px rgb(25, 85, 2);
 }
 
 .disliked {
     background-color: rgb(187, 73, 73);
-    opacity: 0.5;
+    border: solid 3px rgb(114, 2, 2);
 }
 button {
     margin-left: 2px;
+    height: 35px;
     border-radius: 10px;
     width: 45px;
     display: flex;

@@ -20,8 +20,6 @@ export class LikeComponent implements OnInit {
   ngOnInit(): void {
     this._productService.isLiked(this.id).subscribe({
       next: (res) => {
-      
-        
         if (res === true) {
           this.isLiked = true;
         }
@@ -40,10 +38,10 @@ export class LikeComponent implements OnInit {
   sendId(action: string) {
     if (this._authService.isConnected()) {
       if (action === 'like') {
-        this.isLiked = true;
+        this.isLiked = !this.isLiked;
       }
       if (action === 'dislike') {
-        this.isDisliked = true;
+        this.isDisliked = !this.isDisliked
       }
       this.likeOrDislike.emit({ id: this.id, action: action });
       
