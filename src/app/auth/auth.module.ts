@@ -6,8 +6,9 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfilComponent } from './profil/profil.component';
-import { ShopModule } from '../shop/shop.module';
 import { LoggedComponentComponent } from './logged-component/logged-component.component';
+import { FirstLetterUpperCasePipe } from '../pipes/first-letter-uppercase.pipe';
+import { ShopModule } from '../shop/shop.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { LoggedComponentComponent } from './logged-component/logged-component.co
     LoginComponent,
     RegisterComponent,
     ProfilComponent,
-    LoggedComponentComponent
+    LoggedComponentComponent,
+    FirstLetterUpperCasePipe
   ],
   exports: [LoggedComponentComponent],
   imports: [

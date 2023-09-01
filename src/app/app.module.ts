@@ -17,19 +17,20 @@ import { InterceptorInterceptor } from './interceptor/interceptor.interceptor';
 import { ShopComponent } from './shop/shop.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { CookieService } from 'ngx-cookie-service';
-import { LoggedComponentComponent } from './auth/logged-component/logged-component.component';
+import { ShopModule } from './shop/shop.module';
 
 
 
 @NgModule({
-  declarations: [AppComponent, NavbarComponent, FooterComponent, HomeComponent, AuthComponent, ShopComponent],
+  declarations: [AppComponent, NavbarComponent, FooterComponent, HomeComponent, AuthComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ArticlesSectionModule,
     HttpClientModule,
-    AuthModule
+    AuthModule,
+    ShopModule
  
   ],
   providers: [DataService, { provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi: true }, RegisterComponent, CookieService],

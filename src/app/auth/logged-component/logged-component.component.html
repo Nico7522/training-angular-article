@@ -1,6 +1,6 @@
 <ul *ngIf="user" class="navbar-nav ms-auto mb-2 mb-lg-0">
   <li class="nav-item">
-    <a class="nav-link">Panier</a>
+    <a class="nav-link"><img src="../../../assets/panier.png" alt=""></a>
   </li>
   <li class="nav-item dropdown">
     <a
@@ -10,7 +10,7 @@
       data-bs-toggle="dropdown"
       aria-expanded="false"
     >
-      Bonjour {{ user }}
+      Bonjour {{ user | firstLetterUpperCase }}
     </a>
     <ul class="dropdown-menu">
       <li>

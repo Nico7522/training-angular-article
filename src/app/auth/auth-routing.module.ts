@@ -8,6 +8,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { CommandeComponent } from '../shop/commande/commande.component';
 import { ShopComponent } from '../shop/shop.component';
 import { loginGuard } from '../guard/login.guard';
+import { PanierComponent } from '../shop/panier/panier.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,10 @@ const routes: Routes = [
   // { path: "register", canDeactivate: [UnsubmitGuard], component: RegisterComponent},
   // New méthode version guard
   { path: "register", canDeactivate: [dirtyGuard], component: RegisterComponent},
-  { path: "profil", component: ProfilComponent, children: [{path: "commande", component: ShopComponent, loadChildren: () => import('../shop/shop.module').then(m => m.ShopModule)}]}
+  { path: "profil", component: ProfilComponent}, 
+  {path: "profil/commande", component: ShopComponent, loadChildren: () => import('../shop/shop.module').then(m => m.ShopModule)},
+    // {path: "profil/panier", component: PanierComponent, loadChildren: () => import('../shop/shop.module').then(m => m.ShopModule)},
+
 ];
 
 @NgModule({
