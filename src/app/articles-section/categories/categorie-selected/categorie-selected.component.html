@@ -8,7 +8,8 @@
       [description]="product.description"
       [img]="imgUrl + product.img"
       [like]="product.like"
-     
+      [dislike]="product.dislike"
+      (likeOrDislike)="likeOrDislike($event)"
     />
   </div>
 </div>
