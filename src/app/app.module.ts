@@ -17,6 +17,7 @@ import { InterceptorInterceptor } from './interceptor/interceptor.interceptor';
 import { ShopComponent } from './shop/shop.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { CookieService } from 'ngx-cookie-service';
+import { LoggedComponentComponent } from './auth/logged-component/logged-component.component';
 
 
 

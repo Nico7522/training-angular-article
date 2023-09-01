@@ -7,14 +7,17 @@ import { RegisterComponent } from './register/register.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ProfilComponent } from './profil/profil.component';
 import { ShopModule } from '../shop/shop.module';
+import { LoggedComponentComponent } from './logged-component/logged-component.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
-    ProfilComponent
+    ProfilComponent,
+    LoggedComponentComponent
   ],
+  exports: [LoggedComponentComponent],
   imports: [
     CommonModule,
     AuthRoutingModule,

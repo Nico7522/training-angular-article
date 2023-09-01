@@ -22,32 +22,9 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/article">Articles</a>
         </li>
-      
       </ul>
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <!-- TODO : Mettre dans un composant appart -->
-        <li *ngIf="user" class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Bonjour {{ user }}
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a class="dropdown-item" routerLink="/user/profil">Profil</a>
-            </li>
-            <li>
-              <a class="dropdown-item" routerLink="/profil/commande">Commande</a>
-            </li>
-            <li>
-              <a class="dropdown-item disconnect" (click)="logout()">Se déconnecter</a>
-            </li>
-          </ul>
-        </li>
+        <app-logged-component></app-logged-component>
 
         <li *ngIf="!user" class="nav-item">
           <a class="nav-link" routerLink="/login">Connexion</a>

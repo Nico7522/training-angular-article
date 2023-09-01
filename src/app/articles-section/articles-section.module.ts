@@ -15,11 +15,6 @@ import { CategorieSelectedComponent } from './categories/categorie-selected/cate
 import { SharedModule } from '../shared/shared.module';
 import { StockDirective } from '../directives/stock.directive';
 
-
-
-
-
-
 @NgModule({
   declarations: [
     ArticleComponent,

@@ -6,6 +6,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
 import { ProductService } from 'src/app/services/product.service';
+import { LoggedComponentComponent } from 'src/app/auth/logged-component/logged-component.component';
 
 @Component({
   selector: 'app-navbar',
