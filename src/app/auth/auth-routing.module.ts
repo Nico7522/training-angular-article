@@ -19,7 +19,8 @@ const routes: Routes = [
   // New méthode version guard
   { path: "register", canDeactivate: [dirtyGuard], component: RegisterComponent},
   { path: "profil", component: ProfilComponent}, 
-  {path: "profil/commande", component: ShopComponent, loadChildren: () => import('../shop/shop.module').then(m => m.ShopModule)},
+  {path: "profil/panier", component: ShopComponent, loadChildren: () => import('../shop/shop.module').then(m => m.ShopModule)},
+  {path: "profil/commande", component: CommandeComponent},
     // {path: "profil/panier", component: PanierComponent, loadChildren: () => import('../shop/shop.module').then(m => m.ShopModule)},
 
 ];
