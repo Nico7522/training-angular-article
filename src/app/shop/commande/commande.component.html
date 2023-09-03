@@ -1,1 +1,12 @@
-<p>commande works!</p>
+<h3>Vos commandes précédantes </h3>
+
+<div class="fullcommand" *ngFor="let userCommand of command">
+    <h4 class="date">{{userCommand.created_at | dateFormater}}</h4>
+    <div class="command-product" *ngFor="let c of userCommand.products">
+        <img [src]="imgUrl + c.img" alt="">
+        <h4>{{c.title}} </h4>
+        <p>Prix  <br />{{c.price}} Euros</p>
+        <p>Quantité  <br />{{c.quantity}} X</p>
+        <p> <span class="total-price">Prix total</span>  <br /> {{c.price*c.quantity}} Euros</p>
+    </div>
+</div>

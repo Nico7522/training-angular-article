@@ -18,6 +18,7 @@ import { ShopComponent } from './shop/shop.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ShopModule } from './shop/shop.module';
+import { DateFormaterPipe } from './pipes/date-formater.pipe';
 
 
 

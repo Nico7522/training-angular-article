@@ -11,7 +11,7 @@ export class ShopService {
   constructor(private _httpClient: HttpClient) {}
 
   getUserCommand(): Observable<any> {
-    return this._httpClient.get<any>(`${environment.apiUrl}`, {
+    return this._httpClient.get<any>(`${environment.apiUrl}/command/user`, {
       withCredentials: true,
     });
   }
