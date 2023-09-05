@@ -14,6 +14,7 @@
 
     <div class="row-display">
       <app-modal-details [idArticle]="id" [descriptionArticle]="description" />
+      <app-modal-confirm [idArticle]="id" [descriptionArticle]="description"></app-modal-confirm>
       <!-- <a routerLink="/article/{{ id }}">Détails</a> -->
       <app-like
         [like]="like"
