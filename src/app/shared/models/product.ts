@@ -9,4 +9,9 @@ export interface Product {
     img: string;
     created_at: string;
     updated_at: string;
+    
+}
+
+export interface ProductWithQuantity extends Product {
+    quantity: number;
 }

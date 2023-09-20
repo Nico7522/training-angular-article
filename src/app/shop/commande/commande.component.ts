@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShopService } from 'src/app/services/shop.service';
+import { CommandUser } from 'src/app/shared/models/command';
 import { environment } from 'src/environment/environment';
 
 @Component({
@@ -9,7 +10,7 @@ import { environment } from 'src/environment/environment';
 })
 export class CommandeComponent implements OnInit {
   imgUrl = environment.apiUrlImg
-  command: any[] = []
+  command: CommandUser[] = []
   constructor(private _shopService: ShopService){}
 ngOnInit(): void {
     this._shopService.getUserCommand().subscribe({
