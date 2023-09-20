@@ -24,7 +24,7 @@ ngOnInit(): void {
           command.total = calc
           
         }
-        console.log(this.command);
+       
         
       }
     }
