@@ -1,0 +1,11 @@
+h2 {
+    text-align: center;
+}
+
+.previous-commande {
+    display: block;
+    width: 15%;
+    margin: auto;
+    font-size: 0.8rem;
+    text-align: center;
+}

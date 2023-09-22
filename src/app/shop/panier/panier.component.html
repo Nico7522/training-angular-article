@@ -3,4 +3,6 @@
     <h2>{{product.title}}</h2>
 </div>
 
+
+<a (click)="show()" class="btn btn-primary previous-commande" [routerLink]="showPreviousCommand ? ['/profil/panier/commande'] : ['/profil/panier']">Afficher les commandes précédantes</a>
 <router-outlet></router-outlet>

@@ -12,13 +12,15 @@ export class PanierComponent implements OnInit, OnDestroy {
   constructor(private _shopService: ShopService){}
   panier: Product[] | undefined = [];
   panierSub?: Subscription
+  showPreviousCommand: boolean = true;
   ngOnInit(): void {
     this.panierSub = this._shopService.$panier.subscribe(p => this.panier = p)
-
   }
   ngOnDestroy(): void {
     this.panierSub?.unsubscribe();
   }
 
-
+show() {
+  this.showPreviousCommand = !this.showPreviousCommand
+}
 }
