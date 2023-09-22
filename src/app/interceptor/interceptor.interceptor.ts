@@ -29,7 +29,7 @@ export class InterceptorInterceptor implements HttpInterceptor {
     // Si pas pas de cookie ni de nom dans le localstorage on ne fait rien
     let token = this._cookieService.get('token');
     if (!token && localStorage.getItem('name')) {
-      console.log('cc');
+   
       
       this._authService.clearLocalStorage();
     }

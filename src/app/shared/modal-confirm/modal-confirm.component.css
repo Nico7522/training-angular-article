@@ -13,3 +13,8 @@ button > img {
     width: 150px;
     height: 150px;
 }
+
+.product-add {
+    text-align: center;
+    color: cadetblue;
+}

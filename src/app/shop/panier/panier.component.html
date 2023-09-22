@@ -1,2 +1,6 @@
-<p>panier works!</p>
+<h2>Votre panier</h2>
+<div *ngFor="let product of panier">
+    <h2>{{product.title}}</h2>
+</div>
+
 <router-outlet></router-outlet>

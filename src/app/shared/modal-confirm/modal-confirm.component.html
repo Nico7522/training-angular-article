@@ -16,8 +16,9 @@
           </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Ajouter au panier</button>
+          <button type="button" class="btn btn-primary" (click)="addProduct(product)">Ajouter au panier</button>
         </div>
+        <p class="product-add">{{productAddMessage}}</p>
       </div>
     </div>
   </div>
