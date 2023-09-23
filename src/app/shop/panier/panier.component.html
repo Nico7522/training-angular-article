@@ -1,6 +1,6 @@
 <h2>Votre panier</h2>
     <div class="command-product" *ngFor="let product of panier">
-        <!-- <img [src]="imgUrl + c.img" alt=""> -->
+        <img [src]="imgUrl + product.img" alt="">
         <h4>{{product.title}} </h4>
         <p>Prix  <br />{{product.price}} Euros</p>
         <p>Quantité  <br />{{product.quantity}} X</p>
