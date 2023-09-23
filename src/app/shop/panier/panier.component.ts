@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ShopService } from 'src/app/services/shop.service';
-import { Product } from 'src/app/shared/models/product';
+import { CommandUser } from 'src/app/shared/models/command';
+import { Product, ProductWithQuantity } from 'src/app/shared/models/product';
 
 @Component({
   selector: 'app-panier',
@@ -10,11 +11,22 @@ import { Product } from 'src/app/shared/models/product';
 })
 export class PanierComponent implements OnInit, OnDestroy {
   constructor(private _shopService: ShopService){}
-  panier: Product[] | undefined = [];
+  panier: ProductWithQuantity[] | undefined ;
+  totalPrice: number = 0;
   panierSub?: Subscription
   showPreviousCommand: boolean = true;
   ngOnInit(): void {
-    this.panierSub = this._shopService.$panier.subscribe(p => this.panier = p)
+    this.panierSub = this._shopService.$panier.subscribe({
+      next: (p) => {
+        this.panier = p;
+        if (p) {
+      for (const product of p) {
+           this.totalPrice += product.price*product.quantity
+      }
+          
+        }
+      }
+    })
   }
   ngOnDestroy(): void {
     this.panierSub?.unsubscribe();

@@ -1,10 +1,11 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { Product } from '../models/product';
+import { Product, ProductWithQuantity } from '../models/product';
 import { Subscription } from 'rxjs';
 import { DataService } from '../services/data.service';
 import { ProductService } from 'src/app/services/product.service';
 import { environment } from 'src/environment/environment';
 import { ShopService } from 'src/app/services/shop.service';
+import { CommandUser } from '../models/command';
 
 @Component({
   selector: 'app-modal-confirm',
@@ -12,7 +13,8 @@ import { ShopService } from 'src/app/services/shop.service';
   styleUrls: ['./modal-confirm.component.css']
 })
 export class ModalConfirmComponent implements  OnDestroy {
-  product?: Product;
+  product: Product | undefined;
+  quantity: number = 0
   productSub?: Subscription;
   urlImg: string = environment.apiUrlImg
   productAddMessage: string = "";
@@ -40,7 +42,14 @@ ngOnDestroy(): void {
   }
 
   addProduct(product: Product | undefined) {
-    this._shopService.addProduct(product)
-    this.productAddMessage = "Produit ajouté !"
+    if (product) {
+    let newProduct : ProductWithQuantity = {
+      ...product,
+      quantity: this.quantity
+    }
+      this._shopService.addProduct(newProduct)
+      this.productAddMessage = "Produit ajouté !"
+      
+    }
   }
 }

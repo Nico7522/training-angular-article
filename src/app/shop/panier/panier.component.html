@@ -1,7 +1,13 @@
 <h2>Votre panier</h2>
-<div *ngFor="let product of panier">
-    <h2>{{product.title}}</h2>
-</div>
+    <div class="command-product" *ngFor="let product of panier">
+        <!-- <img [src]="imgUrl + c.img" alt=""> -->
+        <h4>{{product.title}} </h4>
+        <p>Prix  <br />{{product.price}} Euros</p>
+        <p>Quantité  <br />{{product.quantity}} X</p>
+        <p> <span class="total-price">Prix total</span>  <br /> {{product.price*product.quantity}} Euros</p>
+    </div>
+    <h4 class="total">TOTAL : {{totalPrice}} Euros</h4>
+
 
 
 <a (click)="show()" class="btn btn-primary previous-commande" [routerLink]="showPreviousCommand ? ['/profil/panier/commande'] : ['/profil/panier']">Afficher les commandes précédantes</a>

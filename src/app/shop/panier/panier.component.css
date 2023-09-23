@@ -9,3 +9,58 @@ h2 {
     font-size: 0.8rem;
     text-align: center;
 }
+
+h3 {
+    text-align: center;
+  }
+  .fullcommand {
+    border: solid black 2px;
+    width: 70%;
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .fullcommand:last-child{
+     
+      margin-bottom: 150px;
+  }
+  
+  .date, .total {
+      border: none;
+      margin: auto;
+  }
+  
+  .total {
+      color: brown;
+  }
+  
+  .command-product {
+      
+    border: solid black 2px;
+    height: 70px;
+    display: flex;
+    width: 100%;
+    
+  }
+  
+  h4 {
+      width: 40%;
+    margin-right: 15px;
+    border-right: solid black 2px;
+    height: 100%;
+  }
+  
+  p {
+      width: 10%;
+    border-right: solid black 2px;
+    height: 100%;
+  }
+  
+  .total-price {
+    color: red;
+  }
+  img {
+      width: 7%;
+  }
+  

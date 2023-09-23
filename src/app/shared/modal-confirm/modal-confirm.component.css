@@ -18,3 +18,7 @@ button > img {
     text-align: center;
     color: cadetblue;
 }
+
+input {
+    width: 10%;
+}
