@@ -9,6 +9,6 @@
     <h4 class="total">TOTAL : {{totalPrice}} Euros</h4>
 
 
-<button (click)="postCommand()" class="btn btn-success previous-commande">Passer la commande</button>
+<button [disabled]="panier && panier.length < 1" (click)="postCommand()" class="btn btn-success previous-commande">Passer la commande</button>
 <a (click)="show()" class="btn btn-primary previous-commande" [routerLink]="showPreviousCommand ? ['/profil/panier/commande'] : ['/profil/panier']">Afficher les commandes précédantes</a>
 <router-outlet></router-outlet>
