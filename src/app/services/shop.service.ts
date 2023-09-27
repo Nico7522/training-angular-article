@@ -22,10 +22,10 @@ export class ShopService {
     });
   }
 
-  postCommand(command: Command): Observable<any> {
+  postCommand(products: any[]): Observable<any> {
     return this._httpClient.post<any>(
       `${environment.apiUrl}/command`,
-      command,
+      { products },
       { withCredentials: true }
     );
   }

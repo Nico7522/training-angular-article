@@ -3,6 +3,7 @@ h2, h4 {
 }
 
 .previous-commande {
+  margin-top: 5px;
     display: block;
     width: 15%;
     margin: auto;

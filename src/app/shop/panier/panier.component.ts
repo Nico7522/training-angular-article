@@ -8,34 +8,47 @@ import { environment } from 'src/environment/environment';
 @Component({
   selector: 'app-panier',
   templateUrl: './panier.component.html',
-  styleUrls: ['./panier.component.css']
+  styleUrls: ['./panier.component.css'],
 })
 export class PanierComponent implements OnInit, OnDestroy {
-  imgUrl = environment.apiUrlImg
+  imgUrl = environment.apiUrlImg;
 
-  constructor(private _shopService: ShopService){}
-  panier: ProductWithQuantity[] | undefined ;
+  constructor(private _shopService: ShopService) {}
+  panier: ProductWithQuantity[] | undefined;
   totalPrice: number = 0;
-  panierSub?: Subscription
+  panierSub?: Subscription;
   showPreviousCommand: boolean = true;
   ngOnInit(): void {
     this.panierSub = this._shopService.$panier.subscribe({
       next: (p) => {
         this.panier = p;
         if (p) {
-      for (const product of p) {
-           this.totalPrice += product.price*product.quantity
-      }
-          
+          for (const product of p) {
+            this.totalPrice += product.price * product.quantity;
+          }
         }
-      }
-    })
+      },
+    });
   }
   ngOnDestroy(): void {
     this.panierSub?.unsubscribe();
   }
 
-show() {
-  this.showPreviousCommand = !this.showPreviousCommand
-}
+  show() {
+    this.showPreviousCommand = !this.showPreviousCommand;
+  }
+
+  postCommand() {
+   
+    let products: any[] = [];
+    this.panier?.map((product) => {
+      products.push({ product_id: product.id, quantity: product.quantity });
+    });
+    console.log(products);
+    
+    this._shopService.postCommand(products).subscribe({
+      next: (res) => console.log(res)
+
+    })
+  }
 }
