@@ -10,5 +10,6 @@ import { Command } from '../shared/models/command';
 export class ShopComponent implements OnInit {
   command: Command[] = [];
   constructor(private _shopService: ShopService) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 }

@@ -17,11 +17,11 @@ export class AuthService {
   $currentUser = this._currentUserSubject.asObservable();
 
   // Username pour set le cookie
-  username: string | null = localStorage.getItem('name');
+  private _username: string | null = localStorage.getItem('name');
 
   private _userName: BehaviorSubject<string | null> = new BehaviorSubject<
     string | null
-  >(this.username);
+  >(this._username);
   $userName = this._userName.asObservable();
 
   // public get currentUserValue(): UserResponse | null {

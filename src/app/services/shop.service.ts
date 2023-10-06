@@ -1,6 +1,6 @@
 import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { Command, CommandUser } from '../shared/models/command';
 import { environment } from 'src/environment/environment';
 import { Product, ProductWithQuantity } from '../shared/models/product';
@@ -9,11 +9,12 @@ import { Product, ProductWithQuantity } from '../shared/models/product';
   providedIn: 'root',
 })
 export class ShopService {
-  panier: ProductWithQuantity[] = [];
+  private _panier: ProductWithQuantity[] = [];
   private _$panier: BehaviorSubject<ProductWithQuantity[] | undefined> =
-    new BehaviorSubject<ProductWithQuantity[] | undefined>(this.panier);
+    new BehaviorSubject<ProductWithQuantity[] | undefined>(this._panier);
   $panier: Observable<ProductWithQuantity[] | undefined> =
     this._$panier.asObservable();
+
   constructor(private _httpClient: HttpClient) {}
 
   getUserCommand(): Observable<any> {
@@ -32,8 +33,8 @@ export class ShopService {
 
   addProduct(product: ProductWithQuantity | undefined) {
     if (product) {
-      this.panier.push(product);
-      this._$panier.next(this.panier);
+      this._panier.push(product);
+      this._$panier.next(this._panier);
     }
   }
 }
